@@ -1,0 +1,608 @@
+#+title: Language Oriented Programming
+#+author: Kaan Sahin, Active Group GmbH
+#+REVEAL_PLUGINS: (notes)
+#+REVEAL_THEME: active
+#+REVEAL_ROOT: file:///home/kaan/tmp/reveal.js
+#+REVEAL_HLEVEL: 100
+#+REVEAL_TRANS: none
+#+OPTIONS: num:nil toc:nil reveal-center:f reveal_slide_number:t reveal_title_slide:nil
+#+MACRO: newline   src_emacs-lisp[:results raw]{"\n "}
+#+MACRO: TIKZ-IMG #+HEADER: :exports results :file $1 :imagemagick yes {{{newline}}} #+HEADER: :results raw {{{newline}}} #+HEADER: :headers '("\usepackage{tikz}") {{{newline}}} #+HEADER: :fit yes :imoutoptions -geometry $2 :iminoptions -density 600
+
+* Language Oriented Programming
+
+#+HTML: <div><div style="max-width:400px;padding-left:130px">
+[[file:images/drawing-hands.jpg]]
+
+#+HTML: </div><div>
+/If you give someone Fortran, he has Fortran./
+/If you give someone Lisp, he has any language he pleases./  —Guy L. Steele
+#+HTML: </div></div>
+
+* Motivation -- Makros
+
+* Motivation -- Makros
+
+*List Comprehensions*
+
+\\
+
+Python
+
+#+begin_src python
+[x * x for x in range(20) if x % 2 == 0]
+#+end_src
+
+\\ 
+
+Haskell
+
+#+begin_src haskell
+[x * x | x <- [1, 2, 3, 4], x > 2]
+#+end_src
+
+* Motivation -- Makros
+
+*Pattern Matching*
+
+\\
+
+Elixir
+
+#+begin_src elixir
+def fun(["Hi", name]), do: "What's up, " <> name <> "?"
+def fun(lis), do: "something else"
+
+case {1, 2, 3} do
+  {1, 2, 4} -> "this won't match"
+  {1, 2, x} -> x
+  _         -> "if nothing else matches"
+end
+#+end_src
+
+* Motivation -- Makros
+
+Weitere Schreiberleichterung: 
+
+- Getter-/Setter-Funktionen
+- Wiederkehrende Definitionen / Umständlichkeiten
+
+Spracherweiterung via Libraries:
+
+- Concurrency-System
+- DSLs
+- Statisches Typsystem
+- . . .
+
+* Motivation -- Domänenspezifische Sprachen
+
+DSLs erleichtern Anwender:innen Probleme mit *sprachlichen Mitteln aus ihrem
+Expertenbereich* zu lösen
+
+Beispiele:
+- SQL
+- HTML und CSS
+- LaTeX
+- PlantUML
+- Prolog
+- ...
+
+* Motivation -- Domänenspezifische Sprachen
+
+*PlantUML*
+
+\\
+
+#+REVEAL_HTML: <div class="column" style="float:left; width: 50%"x>
+#+begin_src plantuml :exports code :file 0
+@startuml
+(*) -up-> "Talk anhören"
+-right->  "begeistert sein"
+-->       "Racket ausprobieren"
+-left->   (*)
+@enduml
+#+end_src
+
+#+REVEAL_HTML: </div>
+
+#+REVEAL_HTML: <div class="column" style="float:right; width: 45%">
+file:images/plantUMLexample.svg
+
+#+REVEAL_HTML: </div>
+
+
+* Racket -- Übersicht
+
+- Lisp-Dialekt, dynamisch getypt
+- ermutigt funktionale Programmierung
+- besonders für (universitäre) Lehre geeignet
+  - funktionale Konzepte
+  - Sprache anpassbar an Bedürfnisse
+
+    HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermeldungen)
+
+* Racket -- (Lisp-)Syntax
+
+- Zwei Arten von Ausdrücken:
+  - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
+  - Listen: =(or false (> 2 1))=
+
+#+BEGIN_NOTES
+- Ausdrücke werden evaluiert / ausgewertet zu Werten
+- Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf
+- Heute wird es aber oft was anderes sein, ein Makro oder eine special form
+#+END_NOTES
+
+* Racket -- Syntax
+
+- Zwei Arten von Ausdrücken:
+  - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
+  - Listen: =(or false (> 2 1))=
+
+\\
+
+zudem noch: 
+- eckige Klammern: =[1 2]=, u. a. in =cond=
+#+BEGIN_NOTES
+- Ausdrücke werden evaluiert / ausgewertet zu Werten
+- Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf
+- Heute wird es aber oft was anderes sein, ein Makro oder eine special form
+#+END_NOTES
+
+* Racket -- Syntax
+
+#+begin_src racket
+3, "String", sym, true                   ;; Atomare Werte
+
+(* (+ 4 3) 2)                            ;; Integer, 14
+
+(list 1 2 3 "Hallo" (+ 1 2))             ;; Liste, (1 2 3 "Hallo" 3)
+
+(if (> 2 3) "It is true" 100)            ;; Integer, 100
+
+(cond
+  [(> 3 4) "Ich bin nicht das Ergebnis"]
+  [(= 3 3) "Ich bin das Ergebnis"]
+  [(> 3 2) "Ich bin nicht das Ergebnis"])  ;; String
+#+end_src
+
+* Racket -- Syntax, Definitionen
+
+#+begin_src racket
+(define pi 3.14159)
+
+(define (add1 x)
+  (+ 1 x))
+
+(define (factorial n)
+  (if (= n 1)
+    1
+    (* n (factorial (dec n)))))
+#+end_src
+
+* Racket -- Evaluation
+
+#+begin_src racket
+repl> (define (foo x y) (+ x y))
+#+end_src
+
+* Racket -- Evaluation
+
+#+begin_src racket
+repl> (define (foo x y) (+ x y))
+repl>
+#+end_src
+
+* Racket -- Evaluation
+
+#+begin_src racket
+repl> (define (foo x y) (+ x y))
+repl> (foo (+ 2 1) (+ 2 2))
+#+end_src
+
+* Racket -- Evaluation
+
+#+begin_src racket
+repl> (define (foo x y) (+ x y))
+repl> (foo (+ 2 1) (+ 2 2))
+7
+#+end_src
+
+* Racket -- Evaluationsschritte
+
+#+begin_src racket
+(foo (+ 2 1) (+ 2 2))
+#+end_src
+
+* Racket -- Evaluationsschritte
+
+#+begin_src racket
+(foo (+ 2 1) (+ 2 2))
+
+↝ (foo 3 (+ 2 2))
+#+end_src
+
+* Racket -- Evaluationsschritte
+
+#+begin_src racket
+(foo (+ 2 1) (+ 2 2))
+
+↝ (foo 3 (+ 2 2))
+
+↝ (foo 3 4)
+#+end_src
+
+* Racket -- Evaluationsschritte
+
+#+begin_src racket
+(foo (+ 2 1) (+ 2 2))
+
+↝ (foo 3 (+ 2 2))
+
+↝ (foo 3 4)
+
+↝ (+ 3 4)
+#+end_src
+
+* Racket -- Evaluationsschritte
+
+#+begin_src racket
+(foo (+ 2 1) (+ 2 2))
+
+↝ (foo 3 (+ 2 2))
+
+↝ (foo 3 4)
+
+↝ (+ 3 4)
+
+↝ 7
+#+end_src
+
+* Racket -- REPL
+
+*R* EAD
+ 
+*E* VAL
+
+*P* RINT
+
+*L* OOP
+
+* Kompilation -- Read und Eval
+
+\\
+
+#+attr_html: :width 800px
+[[file:images/read-eval.svg]]
+
+\\
+\\
+
+Der Racket-Reader liest Text und gibt Datenstrukturen (syntax objects) zurück.
+
+Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten.
+* Kompilation -- Read und Eval
+
+\\
+
+Live-Coding
+
+* Kompilation -- Read und Eval
+
+\\
+
+#+attr_html: :width 800px
+[[file:images/read-eval.svg]]
+
+\\
+\\
+
+Der Racket-Reader liest Text und gibt Datenstrukturen (syntax objects) zurück.
+
+Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten.
+
+* Kompilation -- Read, Eval und Makroexpansion!
+
+\\
+
+#+attr_html: :width 900px
+[[file:images/read-macro-eval.svg]]
+
+* Kompilation -- Read, Eval und Makroexpansion!
+
+\\
+
+#+attr_html: :width 900px
+[[file:images/read-macro-eval.svg]]
+
+\\
+\\
+
+In der Makroexpansion werden Makroaufrufe getätigt.
+
+#+begin_notes
+Weil ja READ Datenstrukturen liefert und EVAL Datenstrukturen entgegennimmt,
+muss folgen, dass Makros Datenstrukturen konsumieren und zurückgeben
+#+end_notes
+* Kompilation -- Read, Eval und Makroexpansion!
+
+\\
+
+#+attr_html: :width 900px
+file:images/read-macro-eval.svg
+
+\\
+\\
+
+Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukturen
+(syntax objects) zurück.
+
+* Makros
+
+\\
+\\
+
+Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukturen
+(syntax objects) zurück.
+
+
+* Makros
+
+\\
+\\
+
+Makros nehmen Datenstrukturen (syntax objects) entgegen und *geben Datenstrukturen
+(syntax objects) zurück.*
+
+\\
+
+* syntax objects
+
+#+HTML: <div><div style="background-color:red">
+TODO Was zu syntax objects zeigen
+#+HTML: </div><div>
+
+* syntax objects
+
+TODO: Quote und Unqoute
+
+
+
+* Makros -- Infix
+
+Statt 
+
+#+begin_src racket
+(+ 2 1)
+#+end_src
+
+wollen wir
+
+#+begin_src racket
+(2 + 1)
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+(define-syntax (infix form)
+  ...)
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+(define-syntax (infix form)
+  (syntax-parse form
+    [(infix ...)
+     ...]))
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+(define-syntax (infix form)
+  (syntax-parse form
+    [(infix (zahl1 op zahl2))
+     ...]))
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+(define-syntax (infix form)
+  (syntax-parse form
+    [(infix (zahl1 op zahl2))
+     #`(op zahl1 zahl2)]))
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+repl> (calc-infix (2 + 1))
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+repl> (calc-infix (2 + 1))
+
+READER
+Datenstruktur: (calc-infix (2 + 1))
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+repl> (calc-infix (2 + 1))
+
+READER
+Datenstruktur: (calc-infix (2 + 1))
+
+MAKROEXPANSION
+↝ (calc-infix (2 + 1))
+↝ (+ 2 1) [Datenstruktur!]
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+repl> (calc-infix (2 + 1))
+
+READER
+Datenstruktur: (calc-infix (2 + 1))
+
+MAKROEXPANSION
+↝ (calc-infix (2 + 1))
+↝ (+ 2 1) [Datenstruktur!]
+
+EVAL
+(+ 2 1)
+↝ 3
+#+end_src
+
+
+* String switch
+
+https://docs.oracle.com/javase/8/docs/technotes/guides/language/strings-switch.html
+
+/" In the JDK 7 release, you can use a String object in the expression of a/
+/switch statement: "/
+
+#+begin_src java
+public String getTypeOfDayWithSwitchStatement(String dayOfWeekArg) {
+     String typeOfDay;
+     switch (dayOfWeekArg) {
+         case "Monday":
+             typeOfDay = "Start of work week";
+             break;
+         case "Tuesday":
+         case "Wednesday":
+         case "Thursday":
+             typeOfDay = "Midweek";
+             break;
+      ...
+#+end_src
+
+#+begin_notes
+Release war: 2011-07-11	
+#+end_notes
+
+* String switch
+
+Wollen folgende Syntax implementieren
+
+#+begin_src racket
+(define y "Work")
+
+(switch y
+        [case "Holiday" -> "I am not around"]
+        [case "Work"    -> "How can I help?"])
+#+end_src
+
+* String switch
+
+\\
+
+#+begin_src racket
+(define y "Work")
+
+(switch y
+        [case "Holiday" -> "I am not around"]
+        [case "Work"    -> "How can I help?"])
+
+↝ [MAKROEXPANSION]
+
+(cond
+  [(eq? y "Holiday") "I am not around"]
+  [(eq? y "Work") "How can I help?"])
+#+end_src
+
+* Domänenspezifische Sprachen
+
+* Domänenspezifische Sprachen
+
+*PlantUML*
+
+\\
+
+#+REVEAL_HTML: <div class="column" style="float:left; width: 50%"x>
+#+begin_src plantuml :exports code :file 0
+@startuml
+(*) -up-> "Talk anhören"
+-right->  "begeistert sein"
+-->       "Racket ausprobieren"
+-left->   (*)
+@enduml
+#+end_src
+
+#+REVEAL_HTML: </div>
+
+#+REVEAL_HTML: <div class="column" style="float:right; width: 45%">
+file:images/plantUMLexample.svg
+
+#+REVEAL_HTML: </div>
+
+* Eigene Syntax für DSLs in Racket
+
+*Datenbank-DSL*: Key-Value-Paare speichern, anfordern, ausdrucken
+
+* Eigene Syntax für DSLs in Racket
+
+*Datenbank-DSL*: Key-Value-Paare speichern, anfordern, ausdrucken
+
+#+begin_src racket
+show-db
+put "coke" 2.50
+put "water" 1.00
+x <- get "water"
+print x
+show-db
+y <- get "coke"
+print "Summe"
+#+end_src
+
+* Eigene Syntax für DSLs in Racket
+
+\\
+
+Live-Coding
+
+* Takeaways
+
+- (Lisp-)Makros sind mächtig
+- DSLs sind hilfreich und wichtig
+
+\\
+
+-> Racket kann beides!
+
+(bessere, knackigere Takeaways?!)
+
+* Wie gehts weiter?
+
+#+HTML: <div><div style="max-width:400px;">
+file:images/active-group.png
+#+HTML: </div></div>
+
+- *Blog*: [[http:funktionale-programmierung.de][funktionale-programmierung.de]]
+
+- Wir geben Schulungen in:
+  - Einführung in die *funktionale Programmierung*
+  - iSAQB FOUNDATION: Grundausbildung Softwarearchitektur
+  - iSAQB FUNAR: *Funktionale Softwarearchitektur*
+  - iSAQB FLEX: Microservices und *Self-Contained Systems*
+   
+* Add-On
+
+Mike Sperber rc3 2020:
+
+All Programming Language Suck? Just Build Your Own! – Language-Oriented Programming with Racket 
+
+
+* Add-On
+
+*Makro-Hygiene*
+
+
+

@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" modified="2023-05-08T11:19:39.087Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="lp6SiKmMb8-HvGVxWFsv" version="21.2.3" type="device">
+  <diagram id="eCN-QElJlRz1IOXp3tYx" name="Page-1">
+    <mxGraphModel dx="830" dy="430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vlRLoo0HOkaH_iG_1lvJ-15" value="syntax-objects" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="vlRLoo0HOkaH_iG_1lvJ-13" edge="1" target="vlRLoo0HOkaH_iG_1lvJ-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vlRLoo0HOkaH_iG_1lvJ-13" value="READ" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vlRLoo0HOkaH_iG_1lvJ-17" value="EVAL" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wj7G7fvYPhtBYtip6uCS-1" value="Text" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="vlRLoo0HOkaH_iG_1lvJ-13" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="40" y="600" as="sourcePoint" />
+            <mxPoint x="450" y="910" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="80" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wj7G7fvYPhtBYtip6uCS-2" value="Werte" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="vlRLoo0HOkaH_iG_1lvJ-17" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="610" as="sourcePoint" />
+            <mxPoint x="550" y="600" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

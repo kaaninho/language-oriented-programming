@@ -1,0 +1,32 @@
+#+title: Techcamp – Language Oriented Programming
+#+author: Kaan Sahin
+
+* Orga
+
+- Talk ist am 31.05. 11:00 – 11:45
+- 45 min Slot, inklusive Q&A
+
+* zu pattern matching, syntax-rule vs syntax-case
+
+https://www.greghendershott.com/fear-of-macros/pattern-matching.html
+
+* Idee für kleine Sprache
+
+DB-Sprache mit =get= und =put=:
+
+#+begin_src
+with-file "my-db.db"
+put "Kaan" 35
+put "Mike" 12
+get "Mike" -> x
+#+end_src
+
+* Inhalt
+
+1. Einführung Racket
+2. Einführung Makros in Racket
+3. switch-case-Makro Beispiel
+4. Makros -> eigene Syntax
+5. Parser
+6. bessere Fehlermeldungen
+7. weitere Beispiele

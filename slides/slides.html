@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Language Oriented Programming</title>
+<meta name="author" content="Kaan Sahin, Active Group GmbH"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/kaan/tmp/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/kaan/tmp/reveal.js/css/theme/active.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/kaan/tmp/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Language Oriented Programming</h1><h2 class="author">Kaan Sahin, Active Group GmbH</h2><p class="date">Created: 2023-05-22 Mon 10:45</p>
+</section>
+
+<section>
+<section id="slide-org0925cde">
+<h2 id="org0925cde">Language Oriented Programming</h2>
+<div><div style="max-width:400px;padding-left:130px">
+
+<div id="orgc105ac4" class="figure">
+<p><img src="images/drawing-hands.jpg" alt="drawing-hands.jpg" />
+</p>
+</div>
+
+</div><div>
+<p>
+<i>If you give someone Fortran, he has Fortran.</i>
+<i>If you give someone Lisp, he has any language he pleases.</i>  —Guy L. Steele
+</p>
+</div></div>
+
+</section>
+</section>
+<section>
+<section id="slide-org79f6289">
+<h2 id="org79f6289">Motivation &#x2013; Makros</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org308587d">
+<h2 id="org308587d">Motivation &#x2013; Makros</h2>
+<p>
+<b>List Comprehensions</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<p>
+Python
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">[x * x <span style="color: #7cd5f1;">for</span> x <span style="color: #7cd5f1;">in</span> <span style="color: #baa0f8;">range</span>(20) <span style="color: #7cd5f1;">if</span> x % 2 == 0]
+</pre>
+</div>
+
+<p>
+<br />
+</p>
+
+<p>
+Haskell
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">[x <span style="color: #f2fffc;">*</span> x <span style="color: #f2fffc;">|</span> x <span style="color: #f2fffc;">&lt;-</span> [1, 2, 3, 4], x <span style="color: #f2fffc;">&gt;</span> 2]
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org910aca6">
+<h2 id="org910aca6">Motivation &#x2013; Makros</h2>
+<p>
+<b>Pattern Matching</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<p>
+Elixir
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elixir"><span style="color: #7cd5f1;">def</span> <span style="color: #a2e57b;">fun</span>([<span style="color: #ffed72;">"Hi"</span>, name]), <span style="color: #7cd5f1;">do:</span> <span style="color: #ffed72;">"What's up, "</span> &lt;&gt; name &lt;&gt; <span style="color: #ffed72;">"?"</span>
+<span style="color: #7cd5f1;">def</span> <span style="color: #a2e57b;">fun</span>(lis), <span style="color: #7cd5f1;">do:</span> <span style="color: #ffed72;">"something else"</span>
+
+<span style="color: #7cd5f1;">case</span> {<span style="color: #f2fffc; background-color: #273136;">1</span>, <span style="color: #f2fffc; background-color: #273136;">2</span>, <span style="color: #f2fffc; background-color: #273136;">3</span>} <span style="color: #7cd5f1;">do</span>
+  {<span style="color: #f2fffc; background-color: #273136;">1</span>, <span style="color: #f2fffc; background-color: #273136;">2</span>, <span style="color: #f2fffc; background-color: #273136;">4</span>} <span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"this won't match"</span>
+  {<span style="color: #f2fffc; background-color: #273136;">1</span>, <span style="color: #f2fffc; background-color: #273136;">2</span>, x} <span style="color: #7cd5f1;">-&gt;</span> x
+  <span style="color: #baa0f8;">_</span>         <span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"if nothing else matches"</span>
+<span style="color: #7cd5f1;">end</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4c736f3">
+<h2 id="org4c736f3">Motivation &#x2013; Makros</h2>
+<p>
+Weitere Schreiberleichterung: 
+</p>
+
+<ul>
+<li>Getter-/Setter-Funktionen</li>
+<li>Wiederkehrende Definitionen / Umständlichkeiten</li>
+
+</ul>
+
+<p>
+Spracherweiterung via Libraries:
+</p>
+
+<ul>
+<li>Concurrency-System</li>
+<li>DSLs</li>
+<li>Statisches Typsystem</li>
+<li>. . .</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1bf803e">
+<h2 id="org1bf803e">Motivation &#x2013; Domänenspezifische Sprachen</h2>
+<p>
+DSLs erleichtern Anwender:innen Probleme mit <b>sprachlichen Mitteln aus ihrem
+Expertenbereich</b> zu lösen
+</p>
+
+<p>
+Beispiele:
+</p>
+<ul>
+<li>SQL</li>
+<li>HTML und CSS</li>
+<li>LaTeX</li>
+<li>PlantUML</li>
+<li>Prolog</li>
+<li>&#x2026;</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6187ed8">
+<h2 id="org6187ed8">Motivation &#x2013; Domänenspezifische Sprachen</h2>
+<p>
+<b>PlantUML</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<div class="column" style="float:left; width: 50%"x>
+<div class="org-src-container">
+
+<pre class="src src-plantuml"><span style="color: #7cd5f1;">@startuml</span>
+(*) -up<span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"Talk anh&#246;ren"</span>
+-right<span style="color: #7cd5f1;">-&gt;</span>  <span style="color: #ffed72;">"begeistert sein"</span>
+<span style="color: #7cd5f1;">--&gt;</span>       <span style="color: #ffed72;">"Racket ausprobieren"</span>
+-left<span style="color: #7cd5f1;">-&gt;</span>   (*)
+<span style="color: #7cd5f1;">@enduml</span>
+</pre>
+</div>
+
+</div>
+
+<div class="column" style="float:right; width: 45%">
+
+<div id="org3c9cc84" class="figure">
+<p><img src="images/plantUMLexample.svg" alt="plantUMLexample.svg" class="org-svg" />
+</p>
+</div>
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9e6cf6e">
+<h2 id="org9e6cf6e">Racket &#x2013; Übersicht</h2>
+<ul>
+<li>Lisp-Dialekt, dynamisch getypt</li>
+<li>ermutigt funktionale Programmierung</li>
+<li>besonders für (universitäre) Lehre geeignet
+<ul>
+<li>funktionale Konzepte</li>
+<li><p>
+Sprache anpassbar an Bedürfnisse
+</p>
+
+<p>
+HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermeldungen)
+</p></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd34740a">
+<h2 id="orgd34740a">Racket &#x2013; (Lisp-)Syntax</h2>
+<ul>
+<li>Zwei Arten von Ausdrücken:
+<ul>
+<li>Atomare Ausdrücke: <code>17</code>, <code>"Hallo"</code>, <code>sym</code>, <code>#f</code></li>
+<li>Listen: <code>(or false (&gt; 2 1))</code></li>
+
+</ul></li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>Ausdrücke werden evaluiert / ausgewertet zu Werten</li>
+<li>Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf</li>
+<li>Heute wird es aber oft was anderes sein, ein Makro oder eine special form</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org852f2c7">
+<h2 id="org852f2c7">Racket &#x2013; Syntax</h2>
+<ul>
+<li>Zwei Arten von Ausdrücken:
+<ul>
+<li>Atomare Ausdrücke: <code>17</code>, <code>"Hallo"</code>, <code>sym</code>, <code>#f</code></li>
+<li>Listen: <code>(or false (&gt; 2 1))</code></li>
+
+</ul></li>
+
+</ul>
+
+<p>
+<br />
+</p>
+
+<p>
+zudem noch: 
+</p>
+<ul>
+<li>eckige Klammern: <code>[1 2]</code>, u. a. in <code>cond</code></li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Ausdrücke werden evaluiert / ausgewertet zu Werten</li>
+<li>Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf</li>
+<li>Heute wird es aber oft was anderes sein, ein Makro oder eine special form</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org01a0dc0">
+<h2 id="org01a0dc0">Racket &#x2013; Syntax</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket"><span style="color: #baa0f8;">3</span>, <span style="color: #ffed72;">"String"</span>, sym, <span style="color: #baa0f8;">true</span>                   <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Atomare Werte</span>
+
+(<span style="color: #baa0f8;">*</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">4</span> <span style="color: #baa0f8;">3</span>) <span style="color: #baa0f8;">2</span>)                            <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Integer, 14</span>
+
+(<span style="color: #baa0f8;">list</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">3</span> <span style="color: #ffed72;">"Hallo"</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>))             <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Liste, (1 2 3 "Hallo" 3)</span>
+
+(<span style="color: #7cd5f1;">if</span> (<span style="color: #baa0f8;">&gt;</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">3</span>) <span style="color: #ffed72;">"It is true"</span> <span style="color: #baa0f8;">100</span>)            <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Integer, 100</span>
+
+(<span style="color: #7cd5f1;">cond</span>
+  [(<span style="color: #baa0f8;">&gt;</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>) <span style="color: #ffed72;">"Ich bin nicht das Ergebnis"</span>]
+  [(<span style="color: #baa0f8;">=</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">3</span>) <span style="color: #ffed72;">"Ich bin das Ergebnis"</span>]
+  [(<span style="color: #baa0f8;">&gt;</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">2</span>) <span style="color: #ffed72;">"Ich bin nicht das Ergebnis"</span>])  <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">String</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7364b83">
+<h2 id="org7364b83">Racket &#x2013; Syntax, Definitionen</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">pi</span> <span style="color: #baa0f8;">3.14159</span>)
+
+(<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">add1</span> x)
+  (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> x))
+
+(<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">factorial</span> n)
+  (<span style="color: #7cd5f1;">if</span> (<span style="color: #baa0f8;">=</span> n <span style="color: #baa0f8;">1</span>)
+    <span style="color: #baa0f8;">1</span>
+    (<span style="color: #baa0f8;">*</span> n (factorial (dec n)))))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge7ccb47">
+<h2 id="orge7ccb47">Racket &#x2013; Evaluation</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0c69e5a">
+<h2 id="org0c69e5a">Racket &#x2013; Evaluation</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+repl&gt;
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2015fc4">
+<h2 id="org2015fc4">Racket &#x2013; Evaluation</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+repl&gt; (foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org290962c">
+<h2 id="org290962c">Racket &#x2013; Evaluation</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+repl&gt; (foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+<span style="color: #baa0f8;">7</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgca759f6">
+<h2 id="orgca759f6">Racket &#x2013; Evaluationsschritte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org45ef5b9">
+<h2 id="org45ef5b9">Racket &#x2013; Evaluationsschritte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgad099da">
+<h2 id="orgad099da">Racket &#x2013; Evaluationsschritte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org49c09d3">
+<h2 id="org49c09d3">Racket &#x2013; Evaluationsschritte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
+
+&#8605; (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc2b5c79">
+<h2 id="orgc2b5c79">Racket &#x2013; Evaluationsschritte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+
+&#8605; (foo <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
+
+&#8605; (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
+
+&#8605; <span style="color: #baa0f8;">7</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4f354e6">
+<h2 id="org4f354e6">Racket &#x2013; REPL</h2>
+<p>
+<b>R</b> EAD
+</p>
+
+<p>
+<b>E</b> VAL
+</p>
+
+<p>
+<b>P</b> RINT
+</p>
+
+<p>
+<b>L</b> OOP
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc090494">
+<h2 id="orgc090494">Kompilation &#x2013; Read und Eval</h2>
+<p>
+<br />
+</p>
+
+
+<div id="org123f852" class="figure">
+<p><img src="images/read-eval.svg" alt="read-eval.svg" class="org-svg" width="800px" />
+</p>
+</div>
+
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Der Racket-Reader liest Text und gibt Datenstrukturen (syntax objects) zurück.
+</p>
+
+<p>
+Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orge37fc73">
+<h2 id="orge37fc73">Kompilation &#x2013; Read und Eval</h2>
+<p>
+<br />
+</p>
+
+<p>
+Live-Coding
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc19568">
+<h2 id="orgdc19568">Kompilation &#x2013; Read und Eval</h2>
+<p>
+<br />
+</p>
+
+
+<div id="orgae860a4" class="figure">
+<p><img src="images/read-eval.svg" alt="read-eval.svg" class="org-svg" width="800px" />
+</p>
+</div>
+
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Der Racket-Reader liest Text und gibt Datenstrukturen (syntax objects) zurück.
+</p>
+
+<p>
+Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org5f0327f">
+<h2 id="org5f0327f">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
+<p>
+<br />
+</p>
+
+
+<div id="org3dddbb0" class="figure">
+<p><img src="images/read-macro-eval.svg" alt="read-macro-eval.svg" class="org-svg" width="900px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga879fbd">
+<h2 id="orga879fbd">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
+<p>
+<br />
+</p>
+
+
+<div id="org57dfd68" class="figure">
+<p><img src="images/read-macro-eval.svg" alt="read-macro-eval.svg" class="org-svg" width="900px" />
+</p>
+</div>
+
+<p>
+<br />
+<br />
+</p>
+
+<p>
+In der Makroexpansion werden Makroaufrufe getätigt.
+</p>
+
+<aside class="notes">
+<p>
+Weil ja READ Datenstrukturen liefert und EVAL Datenstrukturen entgegennimmt,
+muss folgen, dass Makros Datenstrukturen konsumieren und zurückgeben
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org9cd0899">
+<h2 id="org9cd0899">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
+<p>
+<br />
+</p>
+
+
+<div id="orgee4a36c" class="figure">
+<p><img src="images/read-macro-eval.svg" alt="read-macro-eval.svg" class="org-svg" width="900px" />
+</p>
+</div>
+
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukturen
+(syntax objects) zurück.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbed7f57">
+<h2 id="orgbed7f57">Makros</h2>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukturen
+(syntax objects) zurück.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8472a57">
+<h2 id="org8472a57">Makros</h2>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Makros nehmen Datenstrukturen (syntax objects) entgegen und <b>geben Datenstrukturen
+(syntax objects) zurück.</b>
+</p>
+
+<p>
+<br />
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf07d502">
+<h2 id="orgf07d502">syntax objects</h2>
+<div><div style="background-color:red">
+<p>
+TODO Was zu syntax objects zeigen
+</p>
+</div><div>
+
+</section>
+</section>
+<section>
+<section id="slide-org45493ed">
+<h2 id="org45493ed">syntax objects</h2>
+<p>
+TODO: Quote und Unqoute
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2faa874">
+<h2 id="org2faa874">Makros &#x2013; Infix</h2>
+<p>
+Statt 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>)
+</pre>
+</div>
+
+<p>
+wollen wir
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge20f87c">
+<h2 id="orge20f87c">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  <span style="color: #7cd5f1;">...</span>)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org431e23d">
+<h2 id="org431e23d">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
+    [(infix <span style="color: #7cd5f1;">...</span>)
+     <span style="color: #7cd5f1;">...</span>]))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2a205cf">
+<h2 id="org2a205cf">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
+    [(infix (zahl1 op zahl2))
+     <span style="color: #7cd5f1;">...</span>]))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeb7dbf6">
+<h2 id="orgeb7dbf6">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
+    [(infix (zahl1 op zahl2))
+     #`(op zahl1 zahl2)]))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb8b7deb">
+<h2 id="orgb8b7deb">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org63889ca">
+<h2 id="org63889ca">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+
+READER
+Datenstruktur: (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbe7853d">
+<h2 id="orgbe7853d">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+
+READER
+Datenstruktur: (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+
+MAKROEXPANSION
+&#8605; (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+&#8605; (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) [Datenstruktur!]
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org499478b">
+<h2 id="org499478b">Makros &#x2013; Infix</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+
+READER
+Datenstruktur: (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+
+MAKROEXPANSION
+&#8605; (calc-infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+&#8605; (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) [Datenstruktur!]
+
+EVAL
+(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>)
+&#8605; <span style="color: #baa0f8;">3</span>
+</pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org26c91cf">
+<h2 id="org26c91cf">String switch</h2>
+<p>
+<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/language/strings-switch.html">https://docs.oracle.com/javase/8/docs/technotes/guides/language/strings-switch.html</a>
+</p>
+
+<p>
+<i>" In the JDK 7 release, you can use a String object in the expression of a</i>
+<i>switch statement: "</i>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #7cd5f1;">public</span> <span style="color: #7cd5f1;">String</span> <span style="color: #a2e57b;">getTypeOfDayWithSwitchStatement</span>(<span style="color: #7cd5f1;">String</span> <span style="color: #f2fffc;">dayOfWeekArg</span>) {
+     <span style="color: #7cd5f1;">String</span> <span style="color: #f2fffc;">typeOfDay</span>;
+     <span style="color: #7cd5f1;">switch</span> (dayOfWeekArg) {
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Monday"</span>:
+             typeOfDay = <span style="color: #ffed72;">"Start of work week"</span>;
+             <span style="color: #7cd5f1;">break</span>;
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Tuesday"</span>:
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Wednesday"</span>:
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Thursday"</span>:
+             typeOfDay = <span style="color: #ffed72;">"Midweek"</span>;
+             <span style="color: #7cd5f1;">break</span>;
+      ...
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Release war: 2011-07-11	
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org95484b9">
+<h2 id="org95484b9">String switch</h2>
+<p>
+Wollen folgende Syntax implementieren
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">y</span> <span style="color: #ffed72;">"Work"</span>)
+
+(switch y
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Holiday"</span> <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"I am not around"</span>]
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Work"</span>    <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"How can I help?"</span>])
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgee2ff71">
+<h2 id="orgee2ff71">String switch</h2>
+<p>
+<br />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">y</span> <span style="color: #ffed72;">"Work"</span>)
+
+(switch y
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Holiday"</span> <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"I am not around"</span>]
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Work"</span>    <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"How can I help?"</span>])
+
+&#8605; [MAKROEXPANSION]
+
+(<span style="color: #7cd5f1;">cond</span>
+  [(<span style="color: #baa0f8;">eq?</span> y <span style="color: #ffed72;">"Holiday"</span>) <span style="color: #ffed72;">"I am not around"</span>]
+  [(<span style="color: #baa0f8;">eq?</span> y <span style="color: #ffed72;">"Work"</span>) <span style="color: #ffed72;">"How can I help?"</span>)]
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1aba339">
+<h2 id="org1aba339">Domänenspezifische Sprachen</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org0246fdb">
+<h2 id="org0246fdb">Domänenspezifische Sprachen</h2>
+<p>
+<b>PlantUML</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<div class="column" style="float:left; width: 50%"x>
+<div class="org-src-container">
+
+<pre class="src src-plantuml"><span style="color: #7cd5f1;">@startuml</span>
+(*) -up<span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"Talk anh&#246;ren"</span>
+-right<span style="color: #7cd5f1;">-&gt;</span>  <span style="color: #ffed72;">"begeistert sein"</span>
+<span style="color: #7cd5f1;">--&gt;</span>       <span style="color: #ffed72;">"Racket ausprobieren"</span>
+-left<span style="color: #7cd5f1;">-&gt;</span>   (*)
+<span style="color: #7cd5f1;">@enduml</span>
+</pre>
+</div>
+
+</div>
+
+<div class="column" style="float:right; width: 45%">
+
+<div id="org8d0e15c" class="figure">
+<p><img src="images/plantUMLexample.svg" alt="plantUMLexample.svg" class="org-svg" />
+</p>
+</div>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8e02cc5">
+<h2 id="org8e02cc5">Eigene Syntax für DSLs in Racket</h2>
+<p>
+<b>Datenbank-DSL</b>: Key-Value-Paare speichern, anfordern, ausdrucken
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org32c03f8">
+<h2 id="org32c03f8">Eigene Syntax für DSLs in Racket</h2>
+<p>
+<b>Datenbank-DSL</b>: Key-Value-Paare speichern, anfordern, ausdrucken
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">show-db
+put <span style="color: #ffed72;">"coke"</span> <span style="color: #baa0f8;">2.50</span>
+put <span style="color: #ffed72;">"water"</span> <span style="color: #baa0f8;">1.00</span>
+x &lt;- get <span style="color: #ffed72;">"water"</span>
+<span style="color: #baa0f8;">print</span> x
+show-db
+y &lt;- get <span style="color: #ffed72;">"coke"</span>
+<span style="color: #baa0f8;">print</span> <span style="color: #ffed72;">"Summe"</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org92d676e">
+<h2 id="org92d676e">Eigene Syntax für DSLs in Racket</h2>
+<p>
+<br />
+</p>
+
+<p>
+Live-Coding
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org20ea91c">
+<h2 id="org20ea91c">Takeaways</h2>
+<ul>
+<li>(Lisp-)Makros sind mächtig</li>
+<li>DSLs sind hilfreich und wichtig</li>
+
+</ul>
+
+<p>
+<br />
+</p>
+
+<p>
+-&gt; Racket kann beides!
+</p>
+
+<p>
+(bessere, knackigere Takeaways?!)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga87abb1">
+<h2 id="orga87abb1">Wie gehts weiter?</h2>
+<div><div style="max-width:400px;">
+
+<div id="orgb9a55ac" class="figure">
+<p><img src="images/active-group.png" alt="active-group.png" />
+</p>
+</div>
+</div></div>
+
+<ul>
+<li><b>Blog</b>: <a href="http:funktionale-programmierung.de">funktionale-programmierung.de</a></li>
+
+<li>Wir geben Schulungen in:
+<ul>
+<li>Einführung in die <b>funktionale Programmierung</b></li>
+<li>iSAQB FOUNDATION: Grundausbildung Softwarearchitektur</li>
+<li>iSAQB FUNAR: <b>Funktionale Softwarearchitektur</b></li>
+<li>iSAQB FLEX: Microservices und <b>Self-Contained Systems</b></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb0625d3">
+<h2 id="orgb0625d3">Add-On</h2>
+<p>
+Mike Sperber rc3 2020:
+</p>
+
+<p>
+All Programming Language Suck? Just Build Your Own! – Language-Oriented Programming with Racket 
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org946af14">
+<h2 id="org946af14">Add-On</h2>
+<p>
+<b>Makro-Hygiene</b>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///home/kaan/tmp/reveal.js/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 't',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'none', // see README of reveal.js for options
+transitionSpeed: 'default',
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+ { src: 'file:///home/kaan/tmp/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+</script>
+</body>
+</html>
