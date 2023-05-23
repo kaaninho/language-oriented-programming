@@ -4,12 +4,12 @@
 
 #|
 SHOW-DB
-PUT "coke" 2.50
+PUT "milk" 1.50
 PUT "water" 1.00
 x <- GET "water"
 PRINT x
 SHOW-DB
-y <- GET "coke"
+y <- GET "milk"
 PRINT "Summe"
 |#
 
@@ -99,10 +99,10 @@ PRINT "Summe"
      
 #;
 (db (show-db)
-    (put "coke" 2.50)
+    (put "milk" 1.50)
     (put "water" 1.00)
     (x <- get "water")
     (print x)
     (show-db)
-    (y <- get "coke")
+    (y <- get "milk")
     (print "Summe"))
