@@ -115,7 +115,7 @@ file:images/plantUMLexample.svg
 
 - Lisp-Dialekt, dynamisch getypt
 - ermutigt funktionale Programmierung
-- besonders für (universitäre) Lehre geeignet
+- besonders für Lehre geeignet
   - funktionale Konzepte
   - Sprache anpassbar an Bedürfnisse
 
@@ -152,18 +152,18 @@ zudem noch:
 * Racket -- Syntax
 
 #+begin_src racket
-3, "String", sym, true                   ;; Atomare Werte
+3, "String", sym, true                ;; Atomare Werte
 
-(* (+ 4 3) 2)                            ;; Integer, 14
+(* (+ 4 3) 2)                         ;; Integer, 14
 
-(list 1 2 3 "Hallo" (+ 1 2))             ;; Liste, (1 2 3 "Hallo" 3)
+(list 1 2 (+ 1 2) "Hi")               ;; Liste, (1 2 3 "Hi")
 
-(if (> 2 3) "It is true" 100)            ;; Integer, 100
+(if (> 2 3) "It is true" 100)         ;; Integer, 100
 
 (cond
-  [(> 3 4) "Ich bin nicht das Ergebnis"]
-  [(= 3 3) "Ich bin das Ergebnis"]
-  [(> 3 2) "Ich bin nicht das Ergebnis"])  ;; String
+  [(> 3 4) "nicht das Ergebnis"]
+  [(= 3 3) "das Ergebnis"]
+  [(> 3 2) "nicht das Ergebnis"])     ;; String, "das Ergbnis"
 #+end_src
 
 * Racket -- Syntax, Definitionen
@@ -171,8 +171,8 @@ zudem noch:
 #+begin_src racket
 (define pi 3.14159)
 
-(define (add1 x)
-  (+ 1 x))
+(define (umfang radius)
+  (* pi radius))
 
 (define (factorial n)
   (if (= n 1)
@@ -281,11 +281,72 @@ repl> (foo (+ 2 1) (+ 2 2))
 Der Racket-Reader liest Text und gibt Datenstrukturen (syntax objects) zurück.
 
 Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten.
-* Kompilation -- Read und Eval
 
-\\
+* Makros -- syntax objects
+
+Ein syntax object erzeugt man mit =#`= :
+
+#+begin_src racket
+#`(1 2 (+ 1 2) 4)
+#+end_src
+
+* Makros -- syntax objects
+
+Ein syntax object erzeugt man mit =#`= :
+
+#+begin_src racket
+#`(1 2 (+ 1 2) 4)
+↝ #<syntax:intro.rkt:28:2 (1 2 (+ 1 2) 4)>
+#+end_src
+
+* Makros -- syntax objects
+
+Ein syntax object erzeugt man mit =#`= :
+
+#+begin_src racket
+#`(1 2 (+ 1 2) 4)
+↝ #<syntax:intro.rkt:28:2 (1 2 (+ 1 2) 4)>
+
+(define variable 5)
+#`(1 2 variable 4)
+↝ #<syntax:intro.rkt:28:2 (1 2 variable 4)>
+#+end_src
+
+* Makros -- syntax objects
+
+Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
+
+#+begin_src racket
+#`(1 2 #,(+ 1 2) 4)
+#+end_src
+
+* Makros -- syntax objects
+
+Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
+
+#+begin_src racket
+#`(1 2 #,(+ 1 2) 4)
+↝ #<syntax:intro.rkt:28:2 (1 2 3 4)>
+#+end_src
+
+* Makros -- syntax objects
+
+Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
+
+#+begin_src racket
+#`(1 2 #,(+ 1 2) 4)
+↝ #<syntax:intro.rkt:28:2 (1 2 3 4)>
+
+(define variable 5)
+#`(1 2 #,variable 4)
+↝ #<syntax:intro.rkt:28:2 (1 2 5 4)>
+#+end_src
+
+* Makros -- syntax objects
 
 Live-Coding
+
+
 
 * Kompilation -- Read und Eval
 
@@ -356,18 +417,6 @@ Makros nehmen Datenstrukturen (syntax objects) entgegen und *geben Datenstruktur
 
 \\
 
-* syntax objects
-
-#+HTML: <div><div style="background-color:red">
-TODO Was zu syntax objects zeigen
-#+HTML: </div><div>
-
-* syntax objects
-
-TODO: Quote und Unqoute
-
-
-
 * Makros -- Infix
 
 Statt 
@@ -395,6 +444,15 @@ wollen wir
 (define-syntax (infix form)
   (syntax-parse form
     [(infix ...)
+     ...]))
+#+end_src
+
+* Makros -- Infix
+
+#+begin_src racket
+(define-syntax (infix form)
+  (syntax-parse form
+    [(infix stuff)
      ...]))
 #+end_src
 
@@ -441,7 +499,7 @@ Datenstruktur: (calc-infix (2 + 1))
 
 MAKROEXPANSION
 ↝ (calc-infix (2 + 1))
-↝ (+ 2 1) [Datenstruktur!]
+↝ #<syntax(+ 2 1)> [Datenstruktur!]
 #+end_src
 
 * Makros -- Infix
@@ -454,10 +512,10 @@ Datenstruktur: (calc-infix (2 + 1))
 
 MAKROEXPANSION
 ↝ (calc-infix (2 + 1))
-↝ (+ 2 1) [Datenstruktur!]
+↝ #<syntax(+ 2 1)> [Datenstruktur!]
 
 EVAL
-(+ 2 1)
+#<syntax(+ 2 1)>
 ↝ 3
 #+end_src
 
@@ -553,12 +611,12 @@ file:images/plantUMLexample.svg
 
 #+begin_src racket
 show-db
-put "coke" 2.50
+put "milk" 1.50
 put "water" 1.00
 x <- get "water"
 print x
 show-db
-y <- get "coke"
+y <- get "milk"
 print "Summe"
 #+end_src
 
@@ -586,7 +644,6 @@ file:images/active-group.png
 #+HTML: </div></div>
 
 - *Blog*: [[http:funktionale-programmierung.de][funktionale-programmierung.de]]
-
 - Wir geben Schulungen in:
   - Einführung in die *funktionale Programmierung*
   - iSAQB FOUNDATION: Grundausbildung Softwarearchitektur
@@ -595,14 +652,66 @@ file:images/active-group.png
    
 * Add-On
 
-Mike Sperber rc3 2020:
+*Makro-Hygiene*
 
-All Programming Language Suck? Just Build Your Own! – Language-Oriented Programming with Racket 
+* Add-On
+
+*Makro-Hygiene*
+
+#+begin_src racket
+(define-syntax (unless form)
+  (syntax-parse form
+    [(unless test consequent)
+     #`(if (not test)
+           consequent
+           #f)]))
+#+end_src
+
+* Add-On
+
+*Makro-Hygiene*
+
+#+begin_src racket
+(define-syntax (unless form)
+  (syntax-parse form
+    [(unless test consequent)
+     #`(if (not test)
+           consequent
+           #f)]))
+
+(let [[not "komischer wert"]]
+  (unless (< 3 1)
+    (print "Hallo")))
+#+end_src
 
 
 * Add-On
 
 *Makro-Hygiene*
 
+#+begin_src racket
+(define-syntax (do-smth form)
+  (syntax-parse form
+    [(do-smth expr pos non-pos)
+     #`(let [[result expr]]
+         (cond
+           [(positive? result) pos]
+           [else non-pos]))]))
+#+end_src
 
+* Add-On
 
+*Makro-Hygiene*
+
+#+begin_src racket
+(define-syntax (do-smth form)
+  (syntax-parse form
+    [(do-smth expr pos non-pos)
+     #`(let [[result expr]]
+         (cond
+           [(positive? result) pos]
+           [else non-pos]))]))
+
+(let [[result "Es ist positiv"]]
+  (do-smth (+ 3 2) result "nicht positiv"))
+#+end_src
