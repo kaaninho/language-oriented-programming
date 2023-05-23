@@ -29,6 +29,7 @@ PRINT "Summe"
 
 ;; Befehle: SHOW-DB, PRINT x, PUT name val, GET name
 (define SHOW-DB #f)
+(define PRINT #f)
 (define GET #f)
 (define PUT #f)
 (define <- #f)

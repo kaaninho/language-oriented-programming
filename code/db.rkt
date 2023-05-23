@@ -29,6 +29,7 @@ PRINT "Summe"
 
 ;; Befehle: SHOW-DB, PRINT x, PUT name val, GET name
 (define SHOW-DB #f)
+(define PRINT #f)
 (define GET #f)
 (define PUT #f)
 (define <- #f)
@@ -98,11 +99,11 @@ PRINT "Summe"
                  (syntax->list #'(statement ...))))]))
      
 #;
-(db (show-db)
-    (put "milk" 1.50)
-    (put "water" 1.00)
-    (x <- get "water")
-    (print x)
-    (show-db)
-    (y <- get "milk")
-    (print "Summe"))
+(db (SHOW-DB)
+    (PUT "milk" 1.50)
+    (PUT "water" 1.00)
+    (x <- GET "water")
+    (PRINT x)
+    (SHOW-DB)
+    (y <- GET "milk")
+    (PRINT "Summe"))

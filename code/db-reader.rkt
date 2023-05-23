@@ -1,6 +1,5 @@
 #lang racket
 (provide (rename-out (db-read-syntax read-syntax)))
-(require syntax/readerr)
 
 (define (db-read-syntax src in)
   (datum->syntax
