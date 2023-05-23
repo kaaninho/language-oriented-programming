@@ -403,15 +403,6 @@ Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukture
 \\
 \\
 
-Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukturen
-(syntax objects) zurück.
-
-
-* Makros
-
-\\
-\\
-
 Makros nehmen Datenstrukturen (syntax objects) entgegen und *geben Datenstrukturen
 (syntax objects) zurück.*
 
