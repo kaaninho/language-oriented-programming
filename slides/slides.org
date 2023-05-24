@@ -11,23 +11,34 @@
 
 * Language Oriented Programming
 
-#+HTML: <div><div style="max-width:400px;padding-left:130px">
+#+HTML: <div style="max-width:400px;padding-left:130px">
 [[file:images/drawing-hands.jpg]]
-
-#+HTML: </div><div>
+#+HTML: </div>
 /If you give someone Fortran, he has Fortran./
 /If you give someone Lisp, he has any language he pleases./  —Guy L. Steele
-#+HTML: </div></div>
 
 * Racket -- Übersicht
+#+HTML: <div style="display:flex">
 
+#+HTML: <div style="max-width:150px">
+[[file:images/racket-logo.svg]]
+#+HTML: </div>
+
+#+HTML: <div>
 - Lisp-Dialekt, dynamisch getypt
 - ermutigt funktionale Programmierung
 - besonders für Lehre geeignet
   - funktionale Konzepte
-  - Sprache anpassbar an Bedürfnisse
+  - Sprache anpassbar
+#+HTML: </div>
 
-    HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermeldungen)
+#+HTML: </div>
+
+* Racket -- DrRacket
+
+#+HTML: <div style="max-width:900px;">
+[[file:images/beispiel-drracket.png]]
+#+HTML: </div>
 
 * Racket -- (Lisp-)Syntax
 
