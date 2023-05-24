@@ -56,7 +56,7 @@
 
 - Zwei Arten von Ausdrücken:
   - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
-  - Listen: =(or false (> 2 1))=
+  - Forms: =(or false (> 2 1))=
 
 \\
 
