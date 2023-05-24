@@ -567,6 +567,10 @@ Wollen folgende Syntax implementieren
   [(eq? y "Work") "How can I help?"])
 #+end_src
 
+* String switch
+
+Live-Coding
+
 * Domänenspezifische Sprachen
 
 * Domänenspezifische Sprachen
