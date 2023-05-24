@@ -468,41 +468,41 @@ wollen wir
 * Makros -- Infix
 
 #+begin_src racket
-repl> (calc-infix (2 + 1))
+repl> (infix (2 + 1))
 #+end_src
 
 * Makros -- Infix
 
 #+begin_src racket
-repl> (calc-infix (2 + 1))
+repl> (infix (2 + 1))
 
 READER
-Datenstruktur: (calc-infix (2 + 1))
+Datenstruktur: (infix (2 + 1))
 #+end_src
 
 * Makros -- Infix
 
 #+begin_src racket
-repl> (calc-infix (2 + 1))
+repl> (infix (2 + 1))
 
 READER
-Datenstruktur: (calc-infix (2 + 1))
+Datenstruktur: (infix (2 + 1))
 
 MAKROEXPANSION
-↝ (calc-infix (2 + 1))
+↝ (infix (2 + 1))
 ↝ #<syntax(+ 2 1)> [Datenstruktur!]
 #+end_src
 
 * Makros -- Infix
 
 #+begin_src racket
-repl> (calc-infix (2 + 1))
+repl> (infix (2 + 1))
 
 READER
-Datenstruktur: (calc-infix (2 + 1))
+Datenstruktur: (infix (2 + 1))
 
 MAKROEXPANSION
-↝ (calc-infix (2 + 1))
+↝ (infix (2 + 1))
 ↝ #<syntax(+ 2 1)> [Datenstruktur!]
 
 EVAL
