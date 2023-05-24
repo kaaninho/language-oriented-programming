@@ -1,4 +1,3 @@
-#lang reader "db-reader.rkt"
 
 SHOW-DB
 PUT "milk" 1.50
