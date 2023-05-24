@@ -605,14 +605,14 @@ file:images/plantUMLexample.svg
 *Datenbank-DSL*: Key-Value-Paare speichern, anfordern, ausdrucken
 
 #+begin_src racket
-show-db
-put "milk" 1.50
-put "water" 1.00
-x <- get "water"
-print x
-show-db
-y <- get "milk"
-print "Summe"
+SHOW-DB
+PUT "milk" 1.50
+PUT "water" 1.00
+x = GET "water"
+PRINT x
+SHOW-DB
+y = GET "milk"
+PRINT "Summe"
 #+end_src
 
 * Eigene Syntax für DSLs in Racket

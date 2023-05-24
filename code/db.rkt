@@ -6,10 +6,10 @@
 SHOW-DB
 PUT "milk" 1.50
 PUT "water" 1.00
-x <- GET "water"
+x = GET "water"
 PRINT x
 SHOW-DB
-y <- GET "milk"
+y = GET "milk"
 PRINT "Summe"
 |#
 
@@ -32,7 +32,7 @@ PRINT "Summe"
 (define PRINT #f)
 (define GET #f)
 (define PUT #f)
-(define <- #f)
+(define = #f)
 
 
 
@@ -85,7 +85,7 @@ PRINT "Summe"
     [(db statement ...)
      #`(begin
          #,@(map (lambda (statement)
-                   (syntax-parse (datum->syntax #`db statement) #:datum-literals (PRINT SHOW-DB GET PUT <-)
+                   (syntax-parse (datum->syntax #`db statement) #:datum-literals (PRINT SHOW-DB GET PUT =)
                                  [(SHOW-DB)
                                   #`(begin
                                       (display "THE DB: ")
@@ -94,7 +94,7 @@ PRINT "Summe"
                                   #`(print-it x)]
                                  [(PUT name val)
                                   #`(put-it name val)]
-                                 [(var <- GET name)
+                                 [(var = GET name)
                                   #`(define var (get-it name))]))
                  (syntax->list #'(statement ...))))]))
      
@@ -102,8 +102,8 @@ PRINT "Summe"
 (db (SHOW-DB)
     (PUT "milk" 1.50)
     (PUT "water" 1.00)
-    (x <- GET "water")
+    (x = GET "water")
     (PRINT x)
     (SHOW-DB)
-    (y <- GET "milk")
+    (y = GET "milk")
     (PRINT "Summe"))

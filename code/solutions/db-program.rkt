@@ -3,9 +3,9 @@
 SHOW-DB
 PUT "milk" 1.50
 PUT "water" 1.00
-x <- GET "water"
+x = GET "water"
 PRINT x
 SHOW-DB
-y <- GET "milk"
+y = GET "milk"
 PRINT "Summe"
 PRINT (+ x y)
