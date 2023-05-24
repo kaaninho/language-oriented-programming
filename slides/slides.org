@@ -19,6 +19,75 @@
 /If you give someone Lisp, he has any language he pleases./  —Guy L. Steele
 #+HTML: </div></div>
 
+* Racket -- Übersicht
+
+- Lisp-Dialekt, dynamisch getypt
+- ermutigt funktionale Programmierung
+- besonders für Lehre geeignet
+  - funktionale Konzepte
+  - Sprache anpassbar an Bedürfnisse
+
+    HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermeldungen)
+
+* Racket -- (Lisp-)Syntax
+
+- Zwei Arten von Ausdrücken:
+  - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
+  - Listen: =(or false (> 2 1))=
+
+#+BEGIN_NOTES
+- Ausdrücke werden evaluiert / ausgewertet zu Werten
+- Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf
+- Heute wird es aber oft was anderes sein, ein Makro oder eine special form
+#+END_NOTES
+
+* Racket -- Syntax
+
+- Zwei Arten von Ausdrücken:
+  - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
+  - Listen: =(or false (> 2 1))=
+
+\\
+
+zudem noch: 
+- eckige Klammern: =[1 2]=, u. a. in =cond=
+#+BEGIN_NOTES
+- Ausdrücke werden evaluiert / ausgewertet zu Werten
+- Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf
+- Heute wird es aber oft was anderes sein, ein Makro oder eine special form
+#+END_NOTES
+
+* Racket -- Syntax
+
+#+begin_src racket
+3, "String", sym, true                ;; Atomare Werte
+
+(* (+ 4 3) 2)                         ;; Integer, 14
+
+(list 1 2 (+ 1 2) "Hi")               ;; Liste, (1 2 3 "Hi")
+
+(if (> 2 3) "It is true" 100)         ;; Integer, 100
+
+(cond
+  [(> 3 4) "nicht das Ergebnis"]
+  [(= 3 3) "das Ergebnis"]
+  [(> 3 2) "nicht das Ergebnis"])     ;; String, "das Ergbnis"
+#+end_src
+
+* Racket -- Syntax, Definitionen
+
+#+begin_src racket
+(define pi 3.14159)
+
+(define (umfang radius)
+  (* pi radius))
+
+(define (factorial n)
+  (if (= n 1)
+    1
+    (* n (factorial (dec n)))))
+#+end_src
+
 * Motivation -- Makros
 
 * Motivation -- Makros
@@ -109,76 +178,6 @@ Beispiele:
 file:images/plantUMLexample.svg
 
 #+REVEAL_HTML: </div>
-
-
-* Racket -- Übersicht
-
-- Lisp-Dialekt, dynamisch getypt
-- ermutigt funktionale Programmierung
-- besonders für Lehre geeignet
-  - funktionale Konzepte
-  - Sprache anpassbar an Bedürfnisse
-
-    HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermeldungen)
-
-* Racket -- (Lisp-)Syntax
-
-- Zwei Arten von Ausdrücken:
-  - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
-  - Listen: =(or false (> 2 1))=
-
-#+BEGIN_NOTES
-- Ausdrücke werden evaluiert / ausgewertet zu Werten
-- Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf
-- Heute wird es aber oft was anderes sein, ein Makro oder eine special form
-#+END_NOTES
-
-* Racket -- Syntax
-
-- Zwei Arten von Ausdrücken:
-  - Atomare Ausdrücke: =17=, ="Hallo"=, =sym=, =#f=
-  - Listen: =(or false (> 2 1))=
-
-\\
-
-zudem noch: 
-- eckige Klammern: =[1 2]=, u. a. in =cond=
-#+BEGIN_NOTES
-- Ausdrücke werden evaluiert / ausgewertet zu Werten
-- Ein Ausdruck mit Klammern ist meistens ein Funktionsaufruf
-- Heute wird es aber oft was anderes sein, ein Makro oder eine special form
-#+END_NOTES
-
-* Racket -- Syntax
-
-#+begin_src racket
-3, "String", sym, true                ;; Atomare Werte
-
-(* (+ 4 3) 2)                         ;; Integer, 14
-
-(list 1 2 (+ 1 2) "Hi")               ;; Liste, (1 2 3 "Hi")
-
-(if (> 2 3) "It is true" 100)         ;; Integer, 100
-
-(cond
-  [(> 3 4) "nicht das Ergebnis"]
-  [(= 3 3) "das Ergebnis"]
-  [(> 3 2) "nicht das Ergebnis"])     ;; String, "das Ergbnis"
-#+end_src
-
-* Racket -- Syntax, Definitionen
-
-#+begin_src racket
-(define pi 3.14159)
-
-(define (umfang radius)
-  (* pi radius))
-
-(define (factorial n)
-  (if (= n 1)
-    1
-    (* n (factorial (dec n)))))
-#+end_src
 
 * Racket -- Evaluation
 
@@ -623,14 +622,13 @@ Live-Coding
 
 * Takeaways
 
-- (Lisp-)Makros sind mächtig
-- DSLs sind hilfreich und wichtig
+- Racket ermöglicht es Makros sehr einfach zu schreiben
+  - Syntax kann sehr einfach erweitert werden
+- DSLs in Racket schreiben ist einfach und toll
 
 \\
 
--> Racket kann beides!
-
-(bessere, knackigere Takeaways?!)
+-> Racket ist toll
 
 * Wie gehts weiter?
 
