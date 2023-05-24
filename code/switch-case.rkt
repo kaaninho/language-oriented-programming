@@ -11,7 +11,7 @@
 
 (cond
   [(eq? y "Holiday") "I am not around"]
-  [(eq? y "Work") "How can I help?")])
+  [(eq? y "Work") "How can I help?"])
 
 |#
 
