@@ -26,219 +26,78 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Language Oriented Programming</h1><h2 class="author">Kaan Sahin, Active Group GmbH</h2><p class="date">Created: 2023-05-24 Wed 13:00</p>
+<h1 class="title">Language Oriented Programming</h1><h2 class="author">Kaan Sahin, Active Group GmbH</h2><p class="date">Created: 2023-05-24 Wed 17:16</p>
 </section>
 
 <section>
-<section id="slide-org1a2b05f">
-<h2 id="org1a2b05f">Language Oriented Programming</h2>
-<div><div style="max-width:400px;padding-left:130px">
+<section id="slide-org076cbbf">
+<h2 id="org076cbbf">Language Oriented Programming</h2>
+<div style="max-width:400px;padding-left:130px">
 
-<div id="org09eb16e" class="figure">
+<div id="orgaa9b087" class="figure">
 <p><img src="images/drawing-hands.jpg" alt="drawing-hands.jpg" />
 </p>
 </div>
-
-</div><div>
+</div>
 <p>
 <i>If you give someone Fortran, he has Fortran.</i>
 <i>If you give someone Lisp, he has any language he pleases.</i>  —Guy L. Steele
 </p>
-</div></div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgcc605b1">
-<h2 id="orgcc605b1">Motivation &#x2013; Makros</h2>
+<section id="slide-orge30822d">
+<h2 id="orge30822d">Racket &#x2013; Übersicht</h2>
+<div style="display:flex">
 
-</section>
-</section>
-<section>
-<section id="slide-org307ed6d">
-<h2 id="org307ed6d">Motivation &#x2013; Makros</h2>
-<p>
-<b>List Comprehensions</b>
-</p>
+<div style="max-width:150px">
 
-<p>
-<br />
-</p>
-
-<p>
-Python
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-python">[x * x <span style="color: #0000FF;">for</span> x <span style="color: #0000FF;">in</span> <span style="color: #006FE0;">range</span>(20) <span style="color: #0000FF;">if</span> x % 2 == 0]
-</pre>
-</div>
-
-<p>
-<br />
-</p>
-
-<p>
-Haskell
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-haskell">[x <span style="color: #BA36A5;">*</span> x <span style="color: #BA36A5;">|</span> x <span style="color: #BA36A5;">&lt;-</span> [1, 2, 3, 4], x <span style="color: #BA36A5;">&gt;</span> 2]
-</pre>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgac8d560">
-<h2 id="orgac8d560">Motivation &#x2013; Makros</h2>
-<p>
-<b>Pattern Matching</b>
-</p>
-
-<p>
-<br />
-</p>
-
-<p>
-Elixir
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-elixir"><span style="color: #0000FF;">def</span> <span style="color: #006699;">fun</span>([<span style="color: #008000;">"Hi"</span>, name]), <span style="color: #006FE0;">do:</span> <span style="color: #008000;">"What's up, "</span> &lt;&gt; name &lt;&gt; <span style="color: #008000;">"?"</span>
-<span style="color: #0000FF;">def</span> <span style="color: #006699;">fun</span>(lis), <span style="color: #006FE0;">do:</span> <span style="color: #008000;">"something else"</span>
-
-<span style="color: #0000FF;">case</span> {<span style="color: #333333; background-color: #FFFFFF;">1</span>, <span style="color: #333333; background-color: #FFFFFF;">2</span>, <span style="color: #333333; background-color: #FFFFFF;">3</span>} <span style="color: #0000FF;">do</span>
-  {<span style="color: #333333; background-color: #FFFFFF;">1</span>, <span style="color: #333333; background-color: #FFFFFF;">2</span>, <span style="color: #333333; background-color: #FFFFFF;">4</span>} <span style="color: #0000FF;">-&gt;</span> <span style="color: #008000;">"this won't match"</span>
-  {<span style="color: #333333; background-color: #FFFFFF;">1</span>, <span style="color: #333333; background-color: #FFFFFF;">2</span>, x} <span style="color: #0000FF;">-&gt;</span> x
-  <span style="color: #D0372D;">_</span>         <span style="color: #0000FF;">-&gt;</span> <span style="color: #008000;">"if nothing else matches"</span>
-<span style="color: #0000FF;">end</span>
-</pre>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgc759ecd">
-<h2 id="orgc759ecd">Motivation &#x2013; Makros</h2>
-<p>
-Weitere Schreiberleichterung: 
-</p>
-
-<ul>
-<li>Getter-/Setter-Funktionen</li>
-<li>Wiederkehrende Definitionen / Umständlichkeiten</li>
-
-</ul>
-
-<p>
-Spracherweiterung via Libraries:
-</p>
-
-<ul>
-<li>Concurrency-System</li>
-<li>DSLs</li>
-<li>Statisches Typsystem</li>
-<li>. . .</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orge96d620">
-<h2 id="orge96d620">Motivation &#x2013; Domänenspezifische Sprachen</h2>
-<p>
-DSLs erleichtern Anwender:innen Probleme mit <b>sprachlichen Mitteln aus ihrem
-Expertenbereich</b> zu lösen
-</p>
-
-<p>
-Beispiele:
-</p>
-<ul>
-<li>SQL</li>
-<li>HTML und CSS</li>
-<li>LaTeX</li>
-<li>PlantUML</li>
-<li>Prolog</li>
-<li>&#x2026;</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org53276fc">
-<h2 id="org53276fc">Motivation &#x2013; Domänenspezifische Sprachen</h2>
-<p>
-<b>PlantUML</b>
-</p>
-
-<p>
-<br />
-</p>
-
-<div class="column" style="float:left; width: 50%"x>
-<div class="org-src-container">
-
-<pre class="src src-plantuml"><span style="color: #0000FF;">@startuml</span>
-(*) -up<span style="color: #0000FF;">-&gt;</span> <span style="color: #008000;">"Talk anh&#246;ren"</span>
--right<span style="color: #0000FF;">-&gt;</span>  <span style="color: #008000;">"begeistert sein"</span>
-<span style="color: #0000FF;">--&gt;</span>       <span style="color: #008000;">"Racket ausprobieren"</span>
--left<span style="color: #0000FF;">-&gt;</span>   (*)
-<span style="color: #0000FF;">@enduml</span>
-</pre>
-</div>
-
-</div>
-
-<div class="column" style="float:right; width: 45%">
-
-<div id="org0526fa1" class="figure">
-<p><img src="images/plantUMLexample.svg" alt="plantUMLexample.svg" class="org-svg" />
+<div id="orgaf52d82" class="figure">
+<p><img src="images/racket-logo.svg" alt="racket-logo.svg" class="org-svg" />
 </p>
 </div>
-
 </div>
 
-
-</section>
-</section>
-<section>
-<section id="slide-orgb662a5f">
-<h2 id="orgb662a5f">Racket &#x2013; Übersicht</h2>
+<div>
 <ul>
 <li>Lisp-Dialekt, dynamisch getypt</li>
 <li>ermutigt funktionale Programmierung</li>
 <li>besonders für Lehre geeignet
 <ul>
 <li>funktionale Konzepte</li>
-<li><p>
-Sprache anpassbar an Bedürfnisse
-</p>
-
-<p>
-HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermeldungen)
-</p></li>
+<li>Sprache anpassbar an Bedürfnisse</li>
 
 </ul></li>
 
 </ul>
+</div>
+
+</div>
 
 </section>
 </section>
 <section>
-<section id="slide-org9df1da9">
-<h2 id="org9df1da9">Racket &#x2013; (Lisp-)Syntax</h2>
+<section id="slide-orgf2625d8">
+<h2 id="orgf2625d8">Racket &#x2013; DrRacket</h2>
+<div style="max-width:900px;">
+
+<div id="orgd615f41" class="figure">
+<p><img src="images/beispiel-drracket.png" alt="beispiel-drracket.png" />
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org04b2ea8">
+<h2 id="org04b2ea8">Racket &#x2013; (Lisp-)Syntax</h2>
 <ul>
 <li>Zwei Arten von Ausdrücken:
 <ul>
 <li>Atomare Ausdrücke: <code>17</code>, <code>"Hallo"</code>, <code>sym</code>, <code>#f</code></li>
-<li>Listen: <code>(or false (&gt; 2 1))</code></li>
+<li>Forms: <code>(or false (&gt; 2 1))</code></li>
 
 </ul></li>
 
@@ -257,8 +116,8 @@ HIER: BILDER ZEIGEN VON DRRACKET EINFÜHRUNG (mit Pfeilen und schönen Fehlermel
 </section>
 </section>
 <section>
-<section id="slide-org102e098">
-<h2 id="org102e098">Racket &#x2013; Syntax</h2>
+<section id="slide-org1247f14">
+<h2 id="org1247f14">Racket &#x2013; Syntax</h2>
 <ul>
 <li>Zwei Arten von Ausdrücken:
 <ul>
@@ -293,63 +152,222 @@ zudem noch:
 </section>
 </section>
 <section>
-<section id="slide-org1db10d2">
-<h2 id="org1db10d2">Racket &#x2013; Syntax</h2>
+<section id="slide-orgb8a1ac2">
+<h2 id="orgb8a1ac2">Racket &#x2013; Syntax</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket"><span style="color: #D0372D;">3</span>, <span style="color: #008000;">"String"</span>, sym, <span style="color: #006FE0;">true</span>                <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Atomare Werte</span>
+<pre class="src src-racket"><span style="color: #baa0f8;">3</span>, <span style="color: #ffed72;">"String"</span>, sym, <span style="color: #baa0f8;">true</span>                <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Atomare Werte</span>
 
-(<span style="color: #006FE0;">*</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">4</span> <span style="color: #D0372D;">3</span>) <span style="color: #D0372D;">2</span>)                         <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Integer, 14</span>
+(<span style="color: #baa0f8;">*</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">4</span> <span style="color: #baa0f8;">3</span>) <span style="color: #baa0f8;">2</span>)                         <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Integer, 14</span>
 
-(<span style="color: #006FE0;">list</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #008000;">"Hi"</span>)               <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Liste, (1 2 3 "Hi")</span>
+(<span style="color: #baa0f8;">list</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #ffed72;">"Hi"</span>)               <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Liste, (1 2 3 "Hi")</span>
 
-(<span style="color: #0000FF;">if</span> (<span style="color: #006FE0;">&gt;</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">3</span>) <span style="color: #008000;">"It is true"</span> <span style="color: #D0372D;">100</span>)         <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Integer, 100</span>
+(<span style="color: #7cd5f1;">if</span> (<span style="color: #baa0f8;">&gt;</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">3</span>) <span style="color: #ffed72;">"It is true"</span> <span style="color: #baa0f8;">100</span>)         <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">Integer, 100</span>
 
-(<span style="color: #0000FF;">cond</span>
-  [(<span style="color: #006FE0;">&gt;</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>) <span style="color: #008000;">"nicht das Ergebnis"</span>]
-  [(<span style="color: #006FE0;">=</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">3</span>) <span style="color: #008000;">"das Ergebnis"</span>]
-  [(<span style="color: #006FE0;">&gt;</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">2</span>) <span style="color: #008000;">"nicht das Ergebnis"</span>])     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">String, "das Ergbnis"</span>
+(<span style="color: #7cd5f1;">cond</span>
+  [(<span style="color: #baa0f8;">&gt;</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>) <span style="color: #ffed72;">"nicht das Ergebnis"</span>]
+  [(<span style="color: #baa0f8;">=</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">3</span>) <span style="color: #ffed72;">"das Ergebnis"</span>]
+  [(<span style="color: #baa0f8;">&gt;</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">2</span>) <span style="color: #ffed72;">"nicht das Ergebnis"</span>])     <span style="color: #6b7678;">;; </span><span style="color: #6b7678;">String, "das Ergbnis"</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org936effe">
-<h2 id="org936effe">Racket &#x2013; Syntax, Definitionen</h2>
+<section id="slide-org3968f6c">
+<h2 id="org3968f6c">Racket &#x2013; Syntax, Definitionen</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define</span> <span style="color: #BA36A5;">pi</span> <span style="color: #D0372D;">3.14159</span>)
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">pi</span> <span style="color: #baa0f8;">3.14159</span>)
 
-(<span style="color: #0000FF;">define</span> (<span style="color: #006699;">umfang</span> radius)
-  (<span style="color: #006FE0;">*</span> <span style="color: #006FE0;">pi</span> radius))
+(<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">umfang</span> radius)
+  (<span style="color: #baa0f8;">*</span> <span style="color: #baa0f8;">pi</span> radius))
 
-(<span style="color: #0000FF;">define</span> (<span style="color: #006699;">factorial</span> n)
-  (<span style="color: #0000FF;">if</span> (<span style="color: #006FE0;">=</span> n <span style="color: #D0372D;">1</span>)
-    <span style="color: #D0372D;">1</span>
-    (<span style="color: #006FE0;">*</span> n (factorial (dec n)))))
+(<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">factorial</span> n)
+  (<span style="color: #7cd5f1;">if</span> (<span style="color: #baa0f8;">=</span> n <span style="color: #baa0f8;">1</span>)
+    <span style="color: #baa0f8;">1</span>
+    (<span style="color: #baa0f8;">*</span> n (factorial (dec n)))))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgdb97bd6">
-<h2 id="orgdb97bd6">Racket &#x2013; Evaluation</h2>
+<section id="slide-org3d265d9">
+<h2 id="org3d265d9">Motivation &#x2013; Makros</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org4dae255">
+<h2 id="org4dae255">Motivation &#x2013; Makros</h2>
+<p>
+<b>List Comprehensions</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<p>
+Python
+</p>
+
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (<span style="color: #0000FF;">define</span> (<span style="color: #006699;">foo</span> x y) (<span style="color: #006FE0;">+</span> x y))
+<pre class="src src-python">[x * x <span style="color: #7cd5f1;">for</span> x <span style="color: #7cd5f1;">in</span> <span style="color: #baa0f8;">range</span>(20) <span style="color: #7cd5f1;">if</span> x % 2 == 0]
+</pre>
+</div>
+
+<p>
+<br />
+</p>
+
+<p>
+Haskell
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">[x <span style="color: #f2fffc;">*</span> x <span style="color: #f2fffc;">|</span> x <span style="color: #f2fffc;">&lt;-</span> [1, 2, 3, 4], x <span style="color: #f2fffc;">&gt;</span> 2]
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgaeb262c">
-<h2 id="orgaeb262c">Racket &#x2013; Evaluation</h2>
+<section id="slide-org97049b8">
+<h2 id="org97049b8">Motivation &#x2013; Makros</h2>
+<p>
+<b>Pattern Matching</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<p>
+Elixir
+</p>
+
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (<span style="color: #0000FF;">define</span> (<span style="color: #006699;">foo</span> x y) (<span style="color: #006FE0;">+</span> x y))
+<pre class="src src-elixir"><span style="color: #7cd5f1;">def</span> <span style="color: #a2e57b;">fun</span>([<span style="color: #ffed72;">"Hi"</span>, name]), <span style="color: #7cd5f1;">do:</span> <span style="color: #ffed72;">"What's up, "</span> &lt;&gt; name &lt;&gt; <span style="color: #ffed72;">"?"</span>
+<span style="color: #7cd5f1;">def</span> <span style="color: #a2e57b;">fun</span>(lis), <span style="color: #7cd5f1;">do:</span> <span style="color: #ffed72;">"something else"</span>
+
+<span style="color: #7cd5f1;">case</span> {<span style="color: #f2fffc; background-color: #273136;">1</span>, <span style="color: #f2fffc; background-color: #273136;">2</span>, <span style="color: #f2fffc; background-color: #273136;">3</span>} <span style="color: #7cd5f1;">do</span>
+  {<span style="color: #f2fffc; background-color: #273136;">1</span>, <span style="color: #f2fffc; background-color: #273136;">2</span>, <span style="color: #f2fffc; background-color: #273136;">4</span>} <span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"this won't match"</span>
+  {<span style="color: #f2fffc; background-color: #273136;">1</span>, <span style="color: #f2fffc; background-color: #273136;">2</span>, x} <span style="color: #7cd5f1;">-&gt;</span> x
+  <span style="color: #baa0f8;">_</span>         <span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"if nothing else matches"</span>
+<span style="color: #7cd5f1;">end</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga10a4da">
+<h2 id="orga10a4da">Motivation &#x2013; Makros</h2>
+<p>
+Weitere Schreiberleichterung: 
+</p>
+
+<ul>
+<li>Getter-/Setter-Funktionen</li>
+<li>Wiederkehrende Definitionen / Umständlichkeiten</li>
+
+</ul>
+
+<p>
+Spracherweiterung via Libraries:
+</p>
+
+<ul>
+<li>Concurrency-System</li>
+<li>DSLs</li>
+<li>Statisches Typsystem</li>
+<li>. . .</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf684795">
+<h2 id="orgf684795">Motivation &#x2013; Domänenspezifische Sprachen</h2>
+<p>
+DSLs erleichtern Anwender:innen Probleme mit <b>sprachlichen Mitteln aus ihrem
+Expertenbereich</b> zu lösen
+</p>
+
+<p>
+Beispiele:
+</p>
+<ul>
+<li>SQL</li>
+<li>HTML und CSS</li>
+<li>LaTeX</li>
+<li>PlantUML</li>
+<li>Prolog</li>
+<li>&#x2026;</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org383668d">
+<h2 id="org383668d">Motivation &#x2013; Domänenspezifische Sprachen</h2>
+<p>
+<b>PlantUML</b>
+</p>
+
+<p>
+<br />
+</p>
+
+<div class="column" style="float:left; width: 50%"x>
+<div class="org-src-container">
+
+<pre class="src src-plantuml"><span style="color: #7cd5f1;">@startuml</span>
+(*) -up<span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"Talk anh&#246;ren"</span>
+-right<span style="color: #7cd5f1;">-&gt;</span>  <span style="color: #ffed72;">"begeistert sein"</span>
+<span style="color: #7cd5f1;">--&gt;</span>       <span style="color: #ffed72;">"Racket ausprobieren"</span>
+-left<span style="color: #7cd5f1;">-&gt;</span>   (*)
+<span style="color: #7cd5f1;">@enduml</span>
+</pre>
+</div>
+
+</div>
+
+<div class="column" style="float:right; width: 45%">
+
+<div id="org1ca1f62" class="figure">
+<p><img src="images/plantUMLexample.svg" alt="plantUMLexample.svg" class="org-svg" />
+</p>
+</div>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb52b44f">
+<h2 id="orgb52b44f">Racket &#x2013; Evaluation</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org81d92c3">
+<h2 id="org81d92c3">Racket &#x2013; Evaluation</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
 repl&gt;
 </pre>
 </div>
@@ -357,108 +375,108 @@ repl&gt;
 </section>
 </section>
 <section>
-<section id="slide-org98141c3">
-<h2 id="org98141c3">Racket &#x2013; Evaluation</h2>
+<section id="slide-orgc9e8a27">
+<h2 id="orgc9e8a27">Racket &#x2013; Evaluation</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (<span style="color: #0000FF;">define</span> (<span style="color: #006699;">foo</span> x y) (<span style="color: #006FE0;">+</span> x y))
-repl&gt; (foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+repl&gt; (foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org4512bb5">
-<h2 id="org4512bb5">Racket &#x2013; Evaluation</h2>
+<section id="slide-org3916487">
+<h2 id="org3916487">Racket &#x2013; Evaluation</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (<span style="color: #0000FF;">define</span> (<span style="color: #006699;">foo</span> x y) (<span style="color: #006FE0;">+</span> x y))
-repl&gt; (foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
-<span style="color: #D0372D;">7</span>
+<pre class="src src-racket">repl&gt; (<span style="color: #7cd5f1;">define</span> (<span style="color: #a2e57b;">foo</span> x y) (<span style="color: #baa0f8;">+</span> x y))
+repl&gt; (foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
+<span style="color: #baa0f8;">7</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgcdc88a3">
-<h2 id="orgcdc88a3">Racket &#x2013; Evaluationsschritte</h2>
+<section id="slide-org907ed66">
+<h2 id="org907ed66">Racket &#x2013; Evaluationsschritte</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org0094a16">
-<h2 id="org0094a16">Racket &#x2013; Evaluationsschritte</h2>
+<section id="slide-org66a9844">
+<h2 id="org66a9844">Racket &#x2013; Evaluationsschritte</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org75c90aa">
-<h2 id="org75c90aa">Racket &#x2013; Evaluationsschritte</h2>
+<section id="slide-org5cee422">
+<h2 id="org5cee422">Racket &#x2013; Evaluationsschritte</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)
+&#8605; (foo <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org1dc51ff">
-<h2 id="org1dc51ff">Racket &#x2013; Evaluationsschritte</h2>
+<section id="slide-org90ea947">
+<h2 id="org90ea947">Racket &#x2013; Evaluationsschritte</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)
+&#8605; (foo <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
 
-&#8605; (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)
+&#8605; (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org4711375">
-<h2 id="org4711375">Racket &#x2013; Evaluationsschritte</h2>
+<section id="slide-orga63319d">
+<h2 id="orga63319d">Racket &#x2013; Evaluationsschritte</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>) (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+<pre class="src src-racket">(foo (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>) (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">2</span>))
+&#8605; (foo <span style="color: #baa0f8;">3</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">2</span>))
 
-&#8605; (foo <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)
+&#8605; (foo <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
 
-&#8605; (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)
+&#8605; (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)
 
-&#8605; <span style="color: #D0372D;">7</span>
+&#8605; <span style="color: #baa0f8;">7</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org3457cb9">
-<h2 id="org3457cb9">Racket &#x2013; REPL</h2>
+<section id="slide-orgc2ff521">
+<h2 id="orgc2ff521">Racket &#x2013; REPL</h2>
 <p>
 <b>R</b> EAD
 </p>
@@ -478,14 +496,14 @@ repl&gt; (foo (<span style="color: #006FE0;">+</span> <span style="color: #D0372
 </section>
 </section>
 <section>
-<section id="slide-org7e240ab">
-<h2 id="org7e240ab">Kompilation &#x2013; Read und Eval</h2>
+<section id="slide-orgc34ffb7">
+<h2 id="orgc34ffb7">Kompilation &#x2013; Read und Eval</h2>
 <p>
 <br />
 </p>
 
 
-<div id="org8c7dd22" class="figure">
+<div id="orgcff1064" class="figure">
 <p><img src="images/read-eval.svg" alt="read-eval.svg" class="org-svg" width="800px" />
 </p>
 </div>
@@ -506,110 +524,110 @@ Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten
 </section>
 </section>
 <section>
-<section id="slide-org80f6ebd">
-<h2 id="org80f6ebd">Makros &#x2013; syntax objects</h2>
+<section id="slide-org685523e">
+<h2 id="org685523e">Makros &#x2013; syntax objects</h2>
 <p>
 Ein syntax object erzeugt man mit <code>#`</code> :
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)
+<pre class="src src-racket">#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org7e11ab0">
-<h2 id="org7e11ab0">Makros &#x2013; syntax objects</h2>
+<section id="slide-org0cd103e">
+<h2 id="org0cd103e">Makros &#x2013; syntax objects</h2>
 <p>
 Ein syntax object erzeugt man mit <code>#`</code> :
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)
-&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)<span style="color: #006FE0;">&gt;</span>
+<pre class="src src-racket">#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)
+&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)<span style="color: #baa0f8;">&gt;</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org5d3c6bd">
-<h2 id="org5d3c6bd">Makros &#x2013; syntax objects</h2>
+<section id="slide-org3e4eadb">
+<h2 id="org3e4eadb">Makros &#x2013; syntax objects</h2>
 <p>
 Ein syntax object erzeugt man mit <code>#`</code> :
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)
-&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)<span style="color: #006FE0;">&gt;</span>
+<pre class="src src-racket">#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)
+&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)<span style="color: #baa0f8;">&gt;</span>
 
-(<span style="color: #0000FF;">define</span> <span style="color: #BA36A5;">variable</span> <span style="color: #D0372D;">5</span>)
-#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> variable <span style="color: #D0372D;">4</span>)
-&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> variable <span style="color: #D0372D;">4</span>)<span style="color: #006FE0;">&gt;</span>
+(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">variable</span> <span style="color: #baa0f8;">5</span>)
+#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> variable <span style="color: #baa0f8;">4</span>)
+&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> variable <span style="color: #baa0f8;">4</span>)<span style="color: #baa0f8;">&gt;</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org2a5754a">
-<h2 id="org2a5754a">Makros &#x2013; syntax objects</h2>
+<section id="slide-orgcdd743f">
+<h2 id="orgcdd743f">Makros &#x2013; syntax objects</h2>
 <p>
 Einzelnen Code innerhalb eines syntax objects wertet man mit <code>#,</code> aus:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> #,(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)
+<pre class="src src-racket">#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> #,(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orge01da44">
-<h2 id="orge01da44">Makros &#x2013; syntax objects</h2>
+<section id="slide-org255e6af">
+<h2 id="org255e6af">Makros &#x2013; syntax objects</h2>
 <p>
 Einzelnen Code innerhalb eines syntax objects wertet man mit <code>#,</code> aus:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> #,(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)
-&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)<span style="color: #006FE0;">&gt;</span>
+<pre class="src src-racket">#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> #,(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)
+&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)<span style="color: #baa0f8;">&gt;</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org63e16b0">
-<h2 id="org63e16b0">Makros &#x2013; syntax objects</h2>
+<section id="slide-orgf620a7b">
+<h2 id="orgf620a7b">Makros &#x2013; syntax objects</h2>
 <p>
 Einzelnen Code innerhalb eines syntax objects wertet man mit <code>#,</code> aus:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> #,(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span>) <span style="color: #D0372D;">4</span>)
-&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">4</span>)<span style="color: #006FE0;">&gt;</span>
+<pre class="src src-racket">#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> #,(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span>) <span style="color: #baa0f8;">4</span>)
+&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">4</span>)<span style="color: #baa0f8;">&gt;</span>
 
-(<span style="color: #0000FF;">define</span> <span style="color: #BA36A5;">variable</span> <span style="color: #D0372D;">5</span>)
-#`(<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> #,variable <span style="color: #D0372D;">4</span>)
-&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #D0372D;">1</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">5</span> <span style="color: #D0372D;">4</span>)<span style="color: #006FE0;">&gt;</span>
+(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">variable</span> <span style="color: #baa0f8;">5</span>)
+#`(<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> #,variable <span style="color: #baa0f8;">4</span>)
+&#8605; #&lt;syntax:intro.rkt:28:2 (<span style="color: #baa0f8;">1</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">5</span> <span style="color: #baa0f8;">4</span>)<span style="color: #baa0f8;">&gt;</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org50b62ea">
-<h2 id="org50b62ea">Makros &#x2013; syntax objects</h2>
+<section id="slide-org899c85e">
+<h2 id="org899c85e">Makros &#x2013; syntax objects</h2>
 <p>
 Live-Coding
 </p>
@@ -619,14 +637,14 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-orga8e1c6d">
-<h2 id="orga8e1c6d">Kompilation &#x2013; Read und Eval</h2>
+<section id="slide-org4eb73db">
+<h2 id="org4eb73db">Kompilation &#x2013; Read und Eval</h2>
 <p>
 <br />
 </p>
 
 
-<div id="orge8ef16e" class="figure">
+<div id="org096233b" class="figure">
 <p><img src="images/read-eval.svg" alt="read-eval.svg" class="org-svg" width="800px" />
 </p>
 </div>
@@ -647,14 +665,14 @@ Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten
 </section>
 </section>
 <section>
-<section id="slide-org19e60bd">
-<h2 id="org19e60bd">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
+<section id="slide-org6718c74">
+<h2 id="org6718c74">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
 <p>
 <br />
 </p>
 
 
-<div id="orgca719c1" class="figure">
+<div id="org093c2de" class="figure">
 <p><img src="images/read-macro-eval.svg" alt="read-macro-eval.svg" class="org-svg" width="900px" />
 </p>
 </div>
@@ -662,14 +680,14 @@ Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten
 </section>
 </section>
 <section>
-<section id="slide-orgbd298bb">
-<h2 id="orgbd298bb">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
+<section id="slide-orged904eb">
+<h2 id="orged904eb">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
 <p>
 <br />
 </p>
 
 
-<div id="org952aa0b" class="figure">
+<div id="orgd89a57b" class="figure">
 <p><img src="images/read-macro-eval.svg" alt="read-macro-eval.svg" class="org-svg" width="900px" />
 </p>
 </div>
@@ -693,14 +711,14 @@ muss folgen, dass Makros Datenstrukturen konsumieren und zurückgeben
 </section>
 </section>
 <section>
-<section id="slide-orgf9135f9">
-<h2 id="orgf9135f9">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
+<section id="slide-org888c2e8">
+<h2 id="org888c2e8">Kompilation &#x2013; Read, Eval und Makroexpansion!</h2>
 <p>
 <br />
 </p>
 
 
-<div id="org14254eb" class="figure">
+<div id="org84f7506" class="figure">
 <p><img src="images/read-macro-eval.svg" alt="read-macro-eval.svg" class="org-svg" width="900px" />
 </p>
 </div>
@@ -718,8 +736,8 @@ Makros nehmen Datenstrukturen (syntax objects) entgegen und geben Datenstrukture
 </section>
 </section>
 <section>
-<section id="slide-org402ff22">
-<h2 id="org402ff22">Makros</h2>
+<section id="slide-org2cb7bf5">
+<h2 id="org2cb7bf5">Makros</h2>
 <p>
 <br />
 <br />
@@ -737,15 +755,15 @@ Makros nehmen Datenstrukturen (syntax objects) entgegen und <b>geben Datenstrukt
 </section>
 </section>
 <section>
-<section id="slide-org575d421">
-<h2 id="org575d421">Makros &#x2013; Infix</h2>
+<section id="slide-org956e6bd">
+<h2 id="org956e6bd">Makros &#x2013; Infix</h2>
 <p>
 Statt 
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>)
+<pre class="src src-racket">(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>)
 </pre>
 </div>
 
@@ -755,73 +773,73 @@ wollen wir
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>)
+<pre class="src src-racket">(<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>)
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org70e9c4b">
-<h2 id="org70e9c4b">Makros &#x2013; Infix</h2>
+<section id="slide-orgad19aa2">
+<h2 id="orgad19aa2">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">infix</span> form)
-  <span style="color: #0000FF;">...</span>)
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  <span style="color: #7cd5f1;">...</span>)
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org41e8fef">
-<h2 id="org41e8fef">Makros &#x2013; Infix</h2>
+<section id="slide-orga812a29">
+<h2 id="orga812a29">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">infix</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
-    [(infix <span style="color: #0000FF;">...</span>)
-     <span style="color: #0000FF;">...</span>]))
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
+    [(infix <span style="color: #7cd5f1;">...</span>)
+     <span style="color: #7cd5f1;">...</span>]))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org1a5769f">
-<h2 id="org1a5769f">Makros &#x2013; Infix</h2>
+<section id="slide-org71a855b">
+<h2 id="org71a855b">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">infix</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
     [(infix stuff)
-     <span style="color: #0000FF;">...</span>]))
+     <span style="color: #7cd5f1;">...</span>]))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org61bea59">
-<h2 id="org61bea59">Makros &#x2013; Infix</h2>
+<section id="slide-org7b5a0ab">
+<h2 id="org7b5a0ab">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">infix</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
     [(infix (zahl1 op zahl2))
-     <span style="color: #0000FF;">...</span>]))
+     <span style="color: #7cd5f1;">...</span>]))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc10ea7e">
-<h2 id="orgc10ea7e">Makros &#x2013; Infix</h2>
+<section id="slide-org36e838c">
+<h2 id="org36e838c">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">infix</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">infix</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
     [(infix (zahl1 op zahl2))
      #`(op zahl1 zahl2)]))
 </pre>
@@ -830,65 +848,65 @@ wollen wir
 </section>
 </section>
 <section>
-<section id="slide-org5a5ba7c">
-<h2 id="org5a5ba7c">Makros &#x2013; Infix</h2>
+<section id="slide-orgea78ff3">
+<h2 id="orgea78ff3">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+<pre class="src src-racket">repl&gt; (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org124b1ee">
-<h2 id="org124b1ee">Makros &#x2013; Infix</h2>
+<section id="slide-org22494d0">
+<h2 id="org22494d0">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+<pre class="src src-racket">repl&gt; (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 
 READER
-Datenstruktur: (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+Datenstruktur: (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgf574ad9">
-<h2 id="orgf574ad9">Makros &#x2013; Infix</h2>
+<section id="slide-orgc462c1c">
+<h2 id="orgc462c1c">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+<pre class="src src-racket">repl&gt; (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 
 READER
-Datenstruktur: (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+Datenstruktur: (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 
 MAKROEXPANSION
-&#8605; (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
-&#8605; #&lt;syntax(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>)<span style="color: #006FE0;">&gt;</span> [Datenstruktur!]
+&#8605; (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+&#8605; #&lt;syntax(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>)<span style="color: #baa0f8;">&gt;</span> [Datenstruktur!]
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org88c4663">
-<h2 id="org88c4663">Makros &#x2013; Infix</h2>
+<section id="slide-org1e42213">
+<h2 id="org1e42213">Makros &#x2013; Infix</h2>
 <div class="org-src-container">
 
-<pre class="src src-racket">repl&gt; (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+<pre class="src src-racket">repl&gt; (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 
 READER
-Datenstruktur: (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
+Datenstruktur: (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
 
 MAKROEXPANSION
-&#8605; (infix (<span style="color: #D0372D;">2</span> <span style="color: #006FE0;">+</span> <span style="color: #D0372D;">1</span>))
-&#8605; #&lt;syntax(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>)<span style="color: #006FE0;">&gt;</span> [Datenstruktur!]
+&#8605; (infix (<span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">1</span>))
+&#8605; #&lt;syntax(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>)<span style="color: #baa0f8;">&gt;</span> [Datenstruktur!]
 
 EVAL
-#&lt;syntax(<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">2</span> <span style="color: #D0372D;">1</span>)<span style="color: #006FE0;">&gt;</span>
-&#8605; <span style="color: #D0372D;">3</span>
+#&lt;syntax(<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">2</span> <span style="color: #baa0f8;">1</span>)<span style="color: #baa0f8;">&gt;</span>
+&#8605; <span style="color: #baa0f8;">3</span>
 </pre>
 </div>
 
@@ -896,8 +914,8 @@ EVAL
 </section>
 </section>
 <section>
-<section id="slide-org6474e51">
-<h2 id="org6474e51">String switch</h2>
+<section id="slide-orgd9be3c2">
+<h2 id="orgd9be3c2">String switch</h2>
 <p>
 <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/language/strings-switch.html">https://docs.oracle.com/javase/8/docs/technotes/guides/language/strings-switch.html</a>
 </p>
@@ -909,17 +927,17 @@ EVAL
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #6434A3;">String</span> <span style="color: #006699;">getTypeOfDayWithSwitchStatement</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">dayOfWeekArg</span>) {
-     <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">typeOfDay</span>;
-     <span style="color: #0000FF;">switch</span> (dayOfWeekArg) {
-         <span style="color: #0000FF;">case</span> <span style="color: #008000;">"Monday"</span>:
-             typeOfDay = <span style="color: #008000;">"Start of work week"</span>;
-             <span style="color: #0000FF;">break</span>;
-         <span style="color: #0000FF;">case</span> <span style="color: #008000;">"Tuesday"</span>:
-         <span style="color: #0000FF;">case</span> <span style="color: #008000;">"Wednesday"</span>:
-         <span style="color: #0000FF;">case</span> <span style="color: #008000;">"Thursday"</span>:
-             typeOfDay = <span style="color: #008000;">"Midweek"</span>;
-             <span style="color: #0000FF;">break</span>;
+<pre class="src src-java"><span style="color: #7cd5f1;">public</span> <span style="color: #7cd5f1;">String</span> <span style="color: #a2e57b;">getTypeOfDayWithSwitchStatement</span>(<span style="color: #7cd5f1;">String</span> <span style="color: #f2fffc;">dayOfWeekArg</span>) {
+     <span style="color: #7cd5f1;">String</span> <span style="color: #f2fffc;">typeOfDay</span>;
+     <span style="color: #7cd5f1;">switch</span> (dayOfWeekArg) {
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Monday"</span>:
+             typeOfDay = <span style="color: #ffed72;">"Start of work week"</span>;
+             <span style="color: #7cd5f1;">break</span>;
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Tuesday"</span>:
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Wednesday"</span>:
+         <span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Thursday"</span>:
+             typeOfDay = <span style="color: #ffed72;">"Midweek"</span>;
+             <span style="color: #7cd5f1;">break</span>;
       ...
 </pre>
 </div>
@@ -934,52 +952,52 @@ Release war: 2011-07-11
 </section>
 </section>
 <section>
-<section id="slide-org64070d6">
-<h2 id="org64070d6">String switch</h2>
+<section id="slide-org42c2194">
+<h2 id="org42c2194">String switch</h2>
 <p>
 Wollen folgende Syntax implementieren
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define</span> <span style="color: #BA36A5;">y</span> <span style="color: #008000;">"Work"</span>)
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">y</span> <span style="color: #ffed72;">"Work"</span>)
 
 (switch y
-        [<span style="color: #0000FF;">case</span> <span style="color: #008000;">"Holiday"</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #008000;">"I am not around"</span>]
-        [<span style="color: #0000FF;">case</span> <span style="color: #008000;">"Work"</span>    <span style="color: #006FE0;">-&gt;</span> <span style="color: #008000;">"How can I help?"</span>])
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Holiday"</span> <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"I am not around"</span>]
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Work"</span>    <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"How can I help?"</span>])
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgbbb4398">
-<h2 id="orgbbb4398">String switch</h2>
+<section id="slide-orgdca304a">
+<h2 id="orgdca304a">String switch</h2>
 <p>
 <br />
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define</span> <span style="color: #BA36A5;">y</span> <span style="color: #008000;">"Work"</span>)
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define</span> <span style="color: #f2fffc;">y</span> <span style="color: #ffed72;">"Work"</span>)
 
 (switch y
-        [<span style="color: #0000FF;">case</span> <span style="color: #008000;">"Holiday"</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #008000;">"I am not around"</span>]
-        [<span style="color: #0000FF;">case</span> <span style="color: #008000;">"Work"</span>    <span style="color: #006FE0;">-&gt;</span> <span style="color: #008000;">"How can I help?"</span>])
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Holiday"</span> <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"I am not around"</span>]
+        [<span style="color: #7cd5f1;">case</span> <span style="color: #ffed72;">"Work"</span>    <span style="color: #baa0f8;">-&gt;</span> <span style="color: #ffed72;">"How can I help?"</span>])
 
 &#8605; [MAKROEXPANSION]
 
-(<span style="color: #0000FF;">cond</span>
-  [(<span style="color: #006FE0;">eq?</span> y <span style="color: #008000;">"Holiday"</span>) <span style="color: #008000;">"I am not around"</span>]
-  [(<span style="color: #006FE0;">eq?</span> y <span style="color: #008000;">"Work"</span>) <span style="color: #008000;">"How can I help?"</span>])
+(<span style="color: #7cd5f1;">cond</span>
+  [(<span style="color: #baa0f8;">eq?</span> y <span style="color: #ffed72;">"Holiday"</span>) <span style="color: #ffed72;">"I am not around"</span>]
+  [(<span style="color: #baa0f8;">eq?</span> y <span style="color: #ffed72;">"Work"</span>) <span style="color: #ffed72;">"How can I help?"</span>])
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org643ab45">
-<h2 id="org643ab45">String switch</h2>
+<section id="slide-org20d1c46">
+<h2 id="org20d1c46">String switch</h2>
 <p>
 Live-Coding
 </p>
@@ -987,14 +1005,14 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-orgcc83907">
-<h2 id="orgcc83907">Domänenspezifische Sprachen</h2>
+<section id="slide-org6f6eb5b">
+<h2 id="org6f6eb5b">Domänenspezifische Sprachen</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org132e43c">
-<h2 id="org132e43c">Domänenspezifische Sprachen</h2>
+<section id="slide-orgf4bec0e">
+<h2 id="orgf4bec0e">Domänenspezifische Sprachen</h2>
 <p>
 <b>PlantUML</b>
 </p>
@@ -1006,12 +1024,12 @@ Live-Coding
 <div class="column" style="float:left; width: 50%"x>
 <div class="org-src-container">
 
-<pre class="src src-plantuml"><span style="color: #0000FF;">@startuml</span>
-(*) -up<span style="color: #0000FF;">-&gt;</span> <span style="color: #008000;">"Talk anh&#246;ren"</span>
--right<span style="color: #0000FF;">-&gt;</span>  <span style="color: #008000;">"begeistert sein"</span>
-<span style="color: #0000FF;">--&gt;</span>       <span style="color: #008000;">"Racket ausprobieren"</span>
--left<span style="color: #0000FF;">-&gt;</span>   (*)
-<span style="color: #0000FF;">@enduml</span>
+<pre class="src src-plantuml"><span style="color: #7cd5f1;">@startuml</span>
+(*) -up<span style="color: #7cd5f1;">-&gt;</span> <span style="color: #ffed72;">"Talk anh&#246;ren"</span>
+-right<span style="color: #7cd5f1;">-&gt;</span>  <span style="color: #ffed72;">"begeistert sein"</span>
+<span style="color: #7cd5f1;">--&gt;</span>       <span style="color: #ffed72;">"Racket ausprobieren"</span>
+-left<span style="color: #7cd5f1;">-&gt;</span>   (*)
+<span style="color: #7cd5f1;">@enduml</span>
 </pre>
 </div>
 
@@ -1019,7 +1037,7 @@ Live-Coding
 
 <div class="column" style="float:right; width: 45%">
 
-<div id="orgff74e87" class="figure">
+<div id="orga787859" class="figure">
 <p><img src="images/plantUMLexample.svg" alt="plantUMLexample.svg" class="org-svg" />
 </p>
 </div>
@@ -1029,8 +1047,8 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-org07be27d">
-<h2 id="org07be27d">Eigene Syntax für DSLs in Racket</h2>
+<section id="slide-orgaf78d72">
+<h2 id="orgaf78d72">Eigene Syntax für DSLs in Racket</h2>
 <p>
 <b>Datenbank-DSL</b>: Key-Value-Paare speichern, anfordern, ausdrucken
 </p>
@@ -1038,30 +1056,30 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-org4d620c2">
-<h2 id="org4d620c2">Eigene Syntax für DSLs in Racket</h2>
+<section id="slide-orgcd52f2c">
+<h2 id="orgcd52f2c">Eigene Syntax für DSLs in Racket</h2>
 <p>
 <b>Datenbank-DSL</b>: Key-Value-Paare speichern, anfordern, ausdrucken
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">show-db
-put <span style="color: #008000;">"milk"</span> <span style="color: #D0372D;">1.50</span>
-put <span style="color: #008000;">"water"</span> <span style="color: #D0372D;">1.00</span>
-x &lt;- get <span style="color: #008000;">"water"</span>
-<span style="color: #006FE0;">print</span> x
-show-db
-y &lt;- get <span style="color: #008000;">"milk"</span>
-<span style="color: #006FE0;">print</span> <span style="color: #008000;">"Summe"</span>
+<pre class="src src-racket">SHOW-DB
+PUT <span style="color: #ffed72;">"milk"</span> <span style="color: #baa0f8;">1.50</span>
+PUT <span style="color: #ffed72;">"water"</span> <span style="color: #baa0f8;">1.00</span>
+x <span style="color: #baa0f8;">=</span> GET <span style="color: #ffed72;">"water"</span>
+PRINT x
+SHOW-DB
+y <span style="color: #baa0f8;">=</span> GET <span style="color: #ffed72;">"milk"</span>
+PRINT <span style="color: #ffed72;">"Summe"</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org80d139c">
-<h2 id="org80d139c">Eigene Syntax für DSLs in Racket</h2>
+<section id="slide-orgc5f3345">
+<h2 id="orgc5f3345">Eigene Syntax für DSLs in Racket</h2>
 <p>
 <br />
 </p>
@@ -1073,11 +1091,15 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-org940bde8">
-<h2 id="org940bde8">Takeaways</h2>
+<section id="slide-org0c9b72f">
+<h2 id="org0c9b72f">Takeaways</h2>
 <ul>
-<li>(Lisp-)Makros sind mächtig</li>
-<li>DSLs sind hilfreich und wichtig</li>
+<li>Racket ermöglicht es Makros sehr einfach zu schreiben
+<ul>
+<li>Syntax kann sehr einfach erweitert werden</li>
+
+</ul></li>
+<li>DSLs in Racket schreiben ist einfach und toll</li>
 
 </ul>
 
@@ -1086,21 +1108,17 @@ Live-Coding
 </p>
 
 <p>
--&gt; Racket kann beides!
-</p>
-
-<p>
-(bessere, knackigere Takeaways?!)
+-&gt; Racket ist toll
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-org98cc163">
-<h2 id="org98cc163">Wie gehts weiter?</h2>
+<section id="slide-orgdeae865">
+<h2 id="orgdeae865">Wie gehts weiter?</h2>
 <div><div style="max-width:400px;">
 
-<div id="org37b774b" class="figure">
+<div id="org256b2e2" class="figure">
 <p><img src="images/active-group.png" alt="active-group.png" />
 </p>
 </div>
@@ -1122,8 +1140,77 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-orgfde6076">
-<h2 id="orgfde6076">Add-On</h2>
+<section id="slide-org20f7893">
+<h2 id="org20f7893">Add-On &#x2013; riposte</h2>
+<p>
+<b>Riposte—Scripting Language for JSON-based HTTP APIs</b>
+</p>
+
+<p>
+<i>by Jesse Alama &lt;jesse@lisp.sh&gt;</i>
+</p>
+
+<blockquote>
+<p>
+Riposte is a scripting language for evaluating JSON-bearing HTTP
+responses. The intended use case is a JSON-based HTTP API. It comes with a
+commandline tool, riposte, which executes Riposte scripts.
+</p>
+</blockquote>
+
+</section>
+</section>
+<section>
+<section id="slide-org710d387">
+<h2 id="org710d387">Add-On &#x2013; riposte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket"><span style="color: #7cd5f1;">#lang</span> <span style="color: #f2fffc;">riposte</span>
+
+^Content-Type := <span style="color: #ffed72;">"application/json"</span>
+# <span style="color: #baa0f8;">set</span> a base URL
+%base := https://api.example.com:8441/v1/
+
+$uuid := @UUID with fallback <span style="color: #ffed72;">"abc"</span>
+
+GET cart/{uuid} responds with 2XX
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6e57a53">
+<h2 id="org6e57a53">Add-On &#x2013; riposte</h2>
+<div class="org-src-container">
+
+<pre class="src src-racket"><span style="color: #7cd5f1;">#lang</span> <span style="color: #f2fffc;">riposte</span>
+
+# Now add something to the cart:
+
+$productId := <span style="color: #baa0f8;">41966</span>
+$qty := <span style="color: #baa0f8;">5</span>
+$campaignId := <span style="color: #baa0f8;">1</span>
+
+$payload := {
+  <span style="color: #ffed72;">"product_id"</span><span style="color: #baa0f8;">:</span> $productId,     # extend JSON syntax:
+  <span style="color: #ffed72;">"campaign_id"</span><span style="color: #baa0f8;">:</span> $campaignId,   # <span style="color: #baa0f8;">-</span> use Riposte variables
+  <span style="color: #ffed72;">"qty"</span><span style="color: #baa0f8;">:</span> $qty                   # <span style="color: #baa0f8;">-</span> add comments to JSON
+}
+
+POST $payload to cart/{uuid}/items responds with <span style="color: #baa0f8;">200</span>
+
+$itemId := /items/0/cart_item_id # extract the item ID
+
+$itemId is an integer
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf8ee418">
+<h2 id="orgf8ee418">Add-On</h2>
 <p>
 <b>Makro-Hygiene</b>
 </p>
@@ -1131,44 +1218,44 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-orga8dae9f">
-<h2 id="orga8dae9f">Add-On</h2>
+<section id="slide-orgb677e82">
+<h2 id="orgb677e82">Add-On</h2>
 <p>
 <b>Makro-Hygiene</b>
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">unless</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
-    [(<span style="color: #0000FF;">unless</span> test consequent)
-     #`(<span style="color: #0000FF;">if</span> (<span style="color: #006FE0;">not</span> test)
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">unless</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
+    [(<span style="color: #7cd5f1;">unless</span> test consequent)
+     #`(<span style="color: #7cd5f1;">if</span> (<span style="color: #baa0f8;">not</span> test)
            consequent
-           <span style="color: #D0372D;">#f</span>)]))
+           <span style="color: #baa0f8;">#f</span>)]))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgcb8cc5e">
-<h2 id="orgcb8cc5e">Add-On</h2>
+<section id="slide-org7d727b0">
+<h2 id="org7d727b0">Add-On</h2>
 <p>
 <b>Makro-Hygiene</b>
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">unless</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
-    [(<span style="color: #0000FF;">unless</span> test consequent)
-     #`(<span style="color: #0000FF;">if</span> (<span style="color: #006FE0;">not</span> test)
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">unless</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
+    [(<span style="color: #7cd5f1;">unless</span> test consequent)
+     #`(<span style="color: #7cd5f1;">if</span> (<span style="color: #baa0f8;">not</span> test)
            consequent
-           <span style="color: #D0372D;">#f</span>)]))
+           <span style="color: #baa0f8;">#f</span>)]))
 
-(<span style="color: #0000FF;">let</span> [[<span style="color: #BA36A5;">not</span> <span style="color: #008000;">"komischer wert"</span>]]
-  (<span style="color: #0000FF;">unless</span> (<span style="color: #006FE0;">&lt;</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">1</span>)
-    (<span style="color: #006FE0;">print</span> <span style="color: #008000;">"Hallo"</span>)))
+(<span style="color: #7cd5f1;">let</span> [[<span style="color: #f2fffc;">not</span> <span style="color: #ffed72;">"komischer wert"</span>]]
+  (<span style="color: #7cd5f1;">unless</span> (<span style="color: #baa0f8;">&lt;</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">1</span>)
+    (<span style="color: #baa0f8;">print</span> <span style="color: #ffed72;">"Hallo"</span>)))
 </pre>
 </div>
 
@@ -1176,45 +1263,45 @@ Live-Coding
 </section>
 </section>
 <section>
-<section id="slide-org5991c3b">
-<h2 id="org5991c3b">Add-On</h2>
+<section id="slide-org5a24230">
+<h2 id="org5a24230">Add-On</h2>
 <p>
 <b>Makro-Hygiene</b>
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">do-smth</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">do-smth</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
     [(do-smth expr pos non-pos)
-     #`(<span style="color: #0000FF;">let</span> [[<span style="color: #BA36A5;">result</span> expr]]
-         (<span style="color: #0000FF;">cond</span>
-           [(<span style="color: #006FE0;">positive?</span> result) pos]
-           [<span style="color: #0000FF;">else</span> non-pos]))]))
+     #`(<span style="color: #7cd5f1;">let</span> [[<span style="color: #f2fffc;">result</span> expr]]
+         (<span style="color: #7cd5f1;">cond</span>
+           [(<span style="color: #baa0f8;">positive?</span> result) pos]
+           [<span style="color: #7cd5f1;">else</span> non-pos]))]))
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgcb878d8">
-<h2 id="orgcb878d8">Add-On</h2>
+<section id="slide-org7a8981c">
+<h2 id="org7a8981c">Add-On</h2>
 <p>
 <b>Makro-Hygiene</b>
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-racket">(<span style="color: #0000FF;">define-syntax</span> (<span style="color: #006699;">do-smth</span> form)
-  (<span style="color: #006FE0;">syntax-parse</span> form
+<pre class="src src-racket">(<span style="color: #7cd5f1;">define-syntax</span> (<span style="color: #a2e57b;">do-smth</span> form)
+  (<span style="color: #baa0f8;">syntax-parse</span> form
     [(do-smth expr pos non-pos)
-     #`(<span style="color: #0000FF;">let</span> [[<span style="color: #BA36A5;">result</span> expr]]
-         (<span style="color: #0000FF;">cond</span>
-           [(<span style="color: #006FE0;">positive?</span> result) pos]
-           [<span style="color: #0000FF;">else</span> non-pos]))]))
+     #`(<span style="color: #7cd5f1;">let</span> [[<span style="color: #f2fffc;">result</span> expr]]
+         (<span style="color: #7cd5f1;">cond</span>
+           [(<span style="color: #baa0f8;">positive?</span> result) pos]
+           [<span style="color: #7cd5f1;">else</span> non-pos]))]))
 
-(<span style="color: #0000FF;">let</span> [[<span style="color: #BA36A5;">result</span> <span style="color: #008000;">"Es ist positiv"</span>]]
-  (do-smth (<span style="color: #006FE0;">+</span> <span style="color: #D0372D;">3</span> <span style="color: #D0372D;">2</span>) result <span style="color: #008000;">"nicht positiv"</span>))
+(<span style="color: #7cd5f1;">let</span> [[<span style="color: #f2fffc;">result</span> <span style="color: #ffed72;">"Es ist positiv"</span>]]
+  (do-smth (<span style="color: #baa0f8;">+</span> <span style="color: #baa0f8;">3</span> <span style="color: #baa0f8;">2</span>) result <span style="color: #ffed72;">"nicht positiv"</span>))
 </pre>
 </div>
 </section>
