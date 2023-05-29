@@ -633,13 +633,38 @@ Live-Coding
 
 * Takeaways
 
-- Racket ermöglicht es Makros sehr einfach zu schreiben
+* Takeaways
+
+- Makros sind ein mächtiges Werkzeug
+
+* Takeaways
+
+- Makros sind ein mächtiges Werkzeug
+- Racket ermöglicht es, Makros sehr einfach zu schreiben
+
+* Takeaways
+
+- Makros sind ein mächtiges Werkzeug
+- Racket ermöglicht es, Makros sehr einfach zu schreiben
+  - Syntax kann sehr einfach erweitert werden
+
+* Takeaways
+
+- Makros sind ein mächtiges Werkzeug
+- Racket ermöglicht es, Makros sehr einfach zu schreiben
+  - Syntax kann sehr einfach erweitert werden
+- DSLs in Racket schreiben ist einfach und toll
+
+* Takeaways
+
+- Makros sind ein mächtiges Werkzeug
+- Racket ermöglicht es, Makros sehr einfach zu schreiben
   - Syntax kann sehr einfach erweitert werden
 - DSLs in Racket schreiben ist einfach und toll
 
 \\
 
--> Racket ist toll
+↝ Racket ist toll
 
 * Wie gehts weiter?
 
