@@ -7,4 +7,3 @@ PRINT x
 SHOW-DB
 y = GET "milk"
 PRINT "Summe"
-PRINT (+ x y)
