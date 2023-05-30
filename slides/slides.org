@@ -154,42 +154,6 @@ Spracherweiterung via Libraries:
 - Statisches Typsystem
 - . . .
 
-* Motivation -- Domänenspezifische Sprachen
-
-DSLs erleichtern Anwender:innen Probleme mit *sprachlichen Mitteln aus ihrem
-Expertenbereich* zu lösen
-
-Beispiele:
-- SQL
-- HTML und CSS
-- LaTeX
-- PlantUML
-- Prolog
-- ...
-
-* Motivation -- Domänenspezifische Sprachen
-
-*PlantUML*
-
-\\
-
-#+REVEAL_HTML: <div class="column" style="float:left; width: 50%"x>
-#+begin_src plantuml :exports code :file 0
-@startuml
-(*) -up-> "Talk anhören"
--right->  "begeistert sein"
--->       "Racket ausprobieren"
--left->   (*)
-@enduml
-#+end_src
-
-#+REVEAL_HTML: </div>
-
-#+REVEAL_HTML: <div class="column" style="float:right; width: 45%">
-file:images/plantUMLexample.svg
-
-#+REVEAL_HTML: </div>
-
 * Racket -- Evaluation
 
 #+begin_src racket
@@ -585,6 +549,19 @@ Live-Coding
 
 * Domänenspezifische Sprachen
 
+DSLs erleichtern Anwender:innen, Probleme mit *sprachlichen Mitteln aus ihrem
+Expertenbereich* zu lösen
+
+Beispiele:
+- SQL
+- HTML und CSS
+- LaTeX
+- PlantUML
+- Prolog
+- ...
+
+* Domänenspezifische Sprachen
+
 *PlantUML*
 
 \\
@@ -605,6 +582,7 @@ Live-Coding
 file:images/plantUMLexample.svg
 
 #+REVEAL_HTML: </div>
+
 
 * Eigene Syntax für DSLs in Racket
 
