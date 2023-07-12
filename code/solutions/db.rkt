@@ -34,19 +34,16 @@ PRINT "Summe"
 (define PUT #f)
 (define = #f)
 
-
-(define-syntax (dbv1 form)
-  (syntax-parse form
-    [(db-easy statement)
-     (syntax-parse #'statement #:datum-literals (SHOW-DB GET PUT PRINT =)
-                   [(SHOW-DB)
-                    #`(print-it the-db)]
-                   [(var = GET name)
-                    #`(define var (get name))]
-                   [(PUT name val)
-                    #`(put-it name val)]
-                   [(PRINT x)
-                    #`(print-it x)])]))
+(define-syntax (db1 form)
+  (syntax-parse form #:datum-literals (SHOW-DB GET PUT PRINT =)
+    [(db1 (SHOW-DB))
+     #`(print-it the-db)]
+    [(db1 (PRINT x))
+     #`(print-it x)]
+    [(db1 (PUT name val))
+     #`(put-it name val)]
+    [(db1 (var = GET name))
+     #`(define var (get name))]))
 
 
 (define-syntax (db form)
