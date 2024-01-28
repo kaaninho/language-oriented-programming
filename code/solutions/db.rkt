@@ -43,7 +43,7 @@ PRINT "Summe"
     [(db1 (PUT name val))
      #`(put-it name val)]
     [(db1 (var = GET name))
-     #`(define var (get name))]))
+     #`(define var (get-it name))]))
 
 
 (define-syntax (db form)
