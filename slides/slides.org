@@ -631,18 +631,18 @@ Live-Coding
 - Makros sind ein mächtiges Werkzeug
 - Racket ermöglicht es, Makros sehr einfach zu schreiben
   - Syntax kann sehr einfach erweitert werden
-- DSLs in Racket schreiben ist einfach und toll
+- DSLs sind ein wichtiges Werkzeug
 
 * Takeaways
 
 - Makros sind ein mächtiges Werkzeug
 - Racket ermöglicht es, Makros sehr einfach zu schreiben
   - Syntax kann sehr einfach erweitert werden
-- DSLs in Racket schreiben ist einfach und toll
+- DSLs sind ein wichtiges Werkzeug
 
 \\
 
-↝ Racket ist toll
+↝ DSLs und Racket sind toll
 
 * Wie gehts weiter?
 
