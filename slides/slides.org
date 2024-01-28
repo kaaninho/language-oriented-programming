@@ -662,6 +662,19 @@ file:images/active-group-homepage-qr-code.png
 - *Blog*: [[http:funktionale-programmierung.de][funktionale-programmierung.de]]
 
 
+* Wie gehts weiter? -- OOP
+
+- *Mittwoch*, Mike Sperber und Henning Schwentner:
+
+  *18:30 – 20:00:* /OO and FP Can’t Be Friends – Yet/
+
+\\
+
+- *Donnerstag*, Mike Sperber und Alexander Lorz:
+
+  *11:00 – 11:45:* /Qualityland of Confusion/
+
+
 * Add-On -- riposte
 
 *Riposte—Scripting Language for JSON-based HTTP APIs*
