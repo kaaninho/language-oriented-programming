@@ -646,17 +646,22 @@ Live-Coding
 
 * Wie gehts weiter?
 
-#+HTML: <div><div style="max-width:400px;">
+#+HTML: <div><div style="max-width:950px;">
+#+ATTR_HTML: :width 40% :align left
 file:images/active-group.png
+#+ATTR_HTML: :width 15% :align right
+file:images/active-group-homepage-qr-code.png
 #+HTML: </div></div>
 
-- *Blog*: [[http:funktionale-programmierung.de][funktionale-programmierung.de]]
-- Wir geben Schulungen in:
+- Schulung iSAQB DSL: *Domänenspezifische Sprachen*
+\\
+- Weitere Schulungen:
   - Einführung in die *funktionale Programmierung*
-  - iSAQB FOUNDATION: Grundausbildung Softwarearchitektur
-  - iSAQB FUNAR: *Funktionale Softwarearchitektur*
-  - iSAQB FLEX: Microservices und *Self-Contained Systems*
-   
+  - iSAQB FOUNDATION; iSAQB FUNAR; iSAQB FLEX
+
+- *Blog*: [[http:funktionale-programmierung.de][funktionale-programmierung.de]]
+
+
 * Add-On -- riposte
 
 *Riposte—Scripting Language for JSON-based HTTP APIs*
