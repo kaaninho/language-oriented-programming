@@ -11,4 +11,3 @@
 ;; (list + 1 2)
 ;; (list 2 + 1)
 ;; (eval #`(2 + 1))
-;; (list define abc "test")
