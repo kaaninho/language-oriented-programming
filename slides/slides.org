@@ -675,6 +675,66 @@ file:images/active-group-homepage-qr-code.png
   *11:00 – 11:45:* /Qualityland of Confusion/
 
 
+* Add-On -- DSLs im Alltag
+
+*DSL für Eventverarbeitung*
+
+#+REVEAL_HTML: <div style="font-size: 90%;">
+#+begin_src clojure
+{:subject "Production.Equipment.Alarm.Report. WM23",
+ :data    {CMD         "ALARM_REPORT",
+           ALARM_STATE 1,
+           ALARM_ID    6977,
+           ALARM_TEXT  "equipment door jammed"}}
+
+(dsl/wait-for-event event
+  [(:subject #"Production).Equipment\.Alarm\.Report\..*" :as subject)
+   ([:data CMD] "ALARM_REPORT" :as cmd)
+   ([:data ALARM_STATE] 1      :as alarm-state)
+   ([:data ALARM_ID]           :as alarm-id)
+   ([:data ALARM_TEXT]         :as alarm-text)
+   (? [:data ALARM_SEVERITY]   :as alarm-severity)]
+  (dsl/process-event (make-alarm alarm-id alarm-text alarm-severity)))
+#+end_src
+#+REVEAL_HTML: </div>
+
+#+REVEAL_HTML: <div style="font-size: 50%;">
+© Marcus Crestani, 2023
+#+REVEAL_HTML: </div>
+
+* Add-On -- DSLs im Alltag
+
+*Monadische Programme* in Clojure
+
+#+REVEAL_HTML: <div style="font-size: 85%;">
+#+begin_src clojure
+(defn ping-with-retries-m
+  [tries timeout address]
+  (if (<= tries 0)
+    (monad/return false)
+    (monad/monadic [response (ping-m timeout address)]
+                   (if response
+                     (monad/return response)
+                     (ping-with-retries-m (dec tries) timeout address)))))
+#+end_src
+#+REVEAL_HTML: </div>
+
+#+REVEAL_HTML: <div style="font-size: 50%;">
+© Marco Schneider, 2023
+#+REVEAL_HTML: </div>
+
+* Add-On -- DSLs im Alltag
+
+*Monadische Programme* in Haskell
+
+#+REVEAL_HTML: <div style="font-size: 85%;">
+#+begin_src haskell
+main = do printLine "Hallo, gib Deinen Namen ein: "
+          eingabe <- readLine
+          printLine "Hi, " ++ eingabe ++ ", wie gehts?"
+#+end_src
+
+
 * Add-On -- riposte
 
 *Riposte—Scripting Language for JSON-based HTTP APIs*
