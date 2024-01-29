@@ -6,8 +6,8 @@
   (regexp-try-match #px"^\\s+" in)
   (if (eof-object? (peek-char in))
       eof
-      (read (open-input-string (string-append "(" (read-line in) ")")))))
-
+      (read (open-input-string
+             (string-append "(" (read-line in) ")")))))
 
 
 (define (parse-program src in)
@@ -15,7 +15,6 @@
   (if (eof-object? line)
       '()
       (cons line (parse-program src in))))
-
 
 
 (define (db-read-syntax src in)
