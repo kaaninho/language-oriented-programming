@@ -261,7 +261,7 @@ Der Evaluator nimmt Datenstrukturen (syntax objects) und evaluiert sie zu Werten
 Ein syntax object erzeugt man mit =#`= :
 
 #+begin_src racket
-#`(1 2 (+ 1 2) 4)
+#`(foo (+ 2 1) (+ 2 2))
 #+end_src
 
 * Makros -- syntax objects
@@ -269,8 +269,8 @@ Ein syntax object erzeugt man mit =#`= :
 Ein syntax object erzeugt man mit =#`= :
 
 #+begin_src racket
-#`(1 2 (+ 1 2) 4)
-↝ #<syntax:intro.rkt:28:2 (1 2 (+ 1 2) 4)>
+#`(foo (+ 2 1) (+ 2 2))
+↝ #<syntax:intro.rkt:28:2 (foo (+ 2 1) (+ 2 2))>
 #+end_src
 
 * Makros -- syntax objects
@@ -278,12 +278,12 @@ Ein syntax object erzeugt man mit =#`= :
 Ein syntax object erzeugt man mit =#`= :
 
 #+begin_src racket
-#`(1 2 (+ 1 2) 4)
-↝ #<syntax:intro.rkt:28:2 (1 2 (+ 1 2) 4)>
+#`(foo (+ 2 1) (+ 2 2))
+↝ #<syntax:intro.rkt:28:2 (foo (+ 2 1) (+ 2 2))>
 
 (define variable 5)
-#`(1 2 variable 4)
-↝ #<syntax:intro.rkt:28:2 (1 2 variable 4)>
+#`(foo (+ 2 1) variable)
+↝ #<syntax:intro.rkt:28:2 (foo (+ 2 1) variable)>
 #+end_src
 
 * Makros -- syntax objects
@@ -291,7 +291,7 @@ Ein syntax object erzeugt man mit =#`= :
 Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
 
 #+begin_src racket
-#`(1 2 #,(+ 1 2) 4)
+#`(foo (+ 2 1) #,(+ 2 2))
 #+end_src
 
 * Makros -- syntax objects
@@ -299,8 +299,8 @@ Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
 Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
 
 #+begin_src racket
-#`(1 2 #,(+ 1 2) 4)
-↝ #<syntax:intro.rkt:28:2 (1 2 3 4)>
+#`(foo (+ 2 1) #,(+ 2 2))
+↝ #<syntax:intro.rkt:28:2 (foo (+ 2 1) 4)>
 #+end_src
 
 * Makros -- syntax objects
@@ -308,12 +308,12 @@ Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
 Einzelnen Code innerhalb eines syntax objects wertet man mit =#,= aus:
 
 #+begin_src racket
-#`(1 2 #,(+ 1 2) 4)
-↝ #<syntax:intro.rkt:28:2 (1 2 3 4)>
+#`(foo (+ 2 1) #,(+ 2 2))
+↝ #<syntax:intro.rkt:28:2 (foo (+ 2 1) 4)>
 
 (define variable 5)
-#`(1 2 #,variable 4)
-↝ #<syntax:intro.rkt:28:2 (1 2 5 4)>
+#`(foo (+ 2 1) #,variable)
+↝ #<syntax:intro.rkt:28:2 (foo (+ 2 1) 5)>
 #+end_src
 
 * Makros -- syntax objects
