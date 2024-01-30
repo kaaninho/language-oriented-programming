@@ -34,7 +34,15 @@ PRINT "Summe"
 (define PUT #f)
 (define = #f)
 
-
+#;
+(db (SHOW-DB)
+    (PUT "milk" 1.50)
+    (PUT "water" 1.00)
+    (x = GET "water")
+    (PRINT x)
+    (SHOW-DB)
+    (y = GET "milk")
+    (PRINT "Summe"))
 
 
 
@@ -97,13 +105,4 @@ PRINT "Summe"
                                  [(var = GET name)
                                   #`(define var (get-it name))]))
                  (syntax->list #'(statement ...))))]))
-     
-#;
-(db (SHOW-DB)
-    (PUT "milk" 1.50)
-    (PUT "water" 1.00)
-    (x = GET "water")
-    (PRINT x)
-    (SHOW-DB)
-    (y = GET "milk")
-    (PRINT "Summe"))
+   
